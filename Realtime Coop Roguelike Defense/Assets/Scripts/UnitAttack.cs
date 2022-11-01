@@ -10,27 +10,23 @@ public class UnitAttack : MonoBehaviour
     [SerializeField] private float _attackDamage = 10f;
     [SerializeField] public float _attackRange;
     [SerializeField] private float _attackPerTime;
-    
+
     [Header("Projectile Settings")]
+    public bool shootStraight;
     [SerializeField] private float projectileSpeed = 10f;
     [SerializeField] private GameObject projectile;
 
     [Header("Other Settings")]
     public string enemyTag;
-    public GameObject enemyBody;
+    [SerializeField] private GameObject body;
 
     [SerializeField] private GameObject _target;
 
     private float currentAttackSpeedTimer = 0f;
 
-    private Vector3 lookDir => transform.localScale.x < 0 ? Vector3.left : Vector3.right;
+    private Vector3 lookDir => body.transform.localScale.x < 0 ? Vector3.left : Vector3.right;
 
     public UnityAction<GameObject> OnAttack;
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
 
     // Update is called once per frame
     void Update()
@@ -46,9 +42,9 @@ public class UnitAttack : MonoBehaviour
 
     private void DoAttack()
     {
-        Debug.Log(lookDir);
-        var dirToEnemy = (_target.transform.position - (transform.position + lookDir));
-
+        var dirToEnemy = (_target.transform.position - (transform.position + lookDir)).normalized;
+        if (shootStraight)
+            dirToEnemy = lookDir;
         var proj = Instantiate(projectile, transform.position + lookDir, Quaternion.identity);
         proj.transform.rotation = UtilClass.GetRotationFromDirection(dirToEnemy);
         proj.GetComponent<Projectile>().Setup(dirToEnemy, projectileSpeed, enemyTag, _attackDamage);
