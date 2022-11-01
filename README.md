@@ -2,7 +2,7 @@
  roguellike realtime coop game
 
 # Development Progress:
-10/30:
+10/29, 10/30:
 - added Health, Health Bar, Attack, Ability
 
 10/31:
