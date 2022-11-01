@@ -13,7 +13,7 @@ public class Detector : MonoBehaviour
     [Header("OverlapBox Parameters")]
     public Transform detectorOrigin;
     public float detectorSize = 20;
-    public string detectTag;
+    private string detectTag;
     public Vector3 detectorOriginOffset = Vector3.zero;
 
     private float DetectionDelay;
@@ -71,6 +71,7 @@ public class Detector : MonoBehaviour
 
     void Start()
     {
+        detectTag = unit.enemyTag;
         detectorSize = unit._attackRange;
         detectorOrigin = transform;
         StartCoroutine(DetectionCoroutine());
