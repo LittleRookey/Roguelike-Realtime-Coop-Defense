@@ -121,7 +121,7 @@ public class Detector : MonoBehaviour
         }
         SortObjectsOnDistance(colliderList);
 
-        if (colliders != null && colliders.Length > 0)
+        if (colliders != null && colliderList.Count > 0)
         {
             // Set Target
             // animation to shoot
