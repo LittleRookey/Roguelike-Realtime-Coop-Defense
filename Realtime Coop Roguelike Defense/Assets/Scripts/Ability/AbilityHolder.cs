@@ -54,8 +54,9 @@ public class AbilityHolder : MonoBehaviour
                 if (activeTime > 0)
                 {
                     activeTime -= Time.deltaTime;
+                     
                     OnAbilityRunning?.Invoke(gameObject);
-                    if (Input.GetKeyUp(ability.key)) // ends active time
+                    if (Input.GetKeyUp(ability.key) && !ability.Instantaneous) // ends active time when key is unpressed and ability is not instantanous 
                     {
                         TurnSkillOff();
                     }

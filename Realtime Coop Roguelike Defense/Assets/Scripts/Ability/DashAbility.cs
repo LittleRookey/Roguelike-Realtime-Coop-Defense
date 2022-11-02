@@ -24,7 +24,8 @@ public class DashAbility : Ability
     public override void OnAbilityRunning(GameObject parent)
     {
         base.OnAbilityRunning(parent);
-        rb.velocity = Vector2.Lerp(rb.velocity, Vector2.zero, t);
+        float k = 1.0f - Mathf.Pow(t, Time.deltaTime);
+        rb.velocity = Vector2.Lerp(rb.velocity, Vector2.zero, k);
     }
 
     public override void OnAbilityEnd(GameObject parent)

@@ -13,14 +13,16 @@ public class Ability : ScriptableObject
 {
     [Header("Debug")]
     public bool showLog;
-
+    
+    [Header("Main Ability Settings")]
     public new string name; // ability name
     public float coolDownTime; // cooldown time for ability
-    public float activeTime; // time to start cooldown after ability is activated
+    public float activeTime; // time to start cooldown after ability is activated, normally runs until the player's on key up event
     [TextArea]
     public string description; // description of the ability
     public eAbilityType abilityType; // type of ability 
     public KeyCode key; // ability use key 
+    public bool Instantaneous; // will allow to run OnAbilityRunning even when player on key up
 
     [SerializeField] 
     protected bool cantMoveWhileUsingAbility; // allows player to move while using ability
