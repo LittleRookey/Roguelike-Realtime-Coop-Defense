@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 324467837843289216}
   - component: {fileID: 324467837843289222}
   - component: {fileID: 324467837843289223}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FireCircle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4835,7 +4835,7 @@ GameObject:
   - component: {fileID: 324467838203435984}
   - component: {fileID: 324467838203435990}
   - component: {fileID: 324467838203435991}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FireLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9659,7 +9659,7 @@ GameObject:
   - component: {fileID: 324467839372145952}
   - component: {fileID: 324467839372145958}
   - component: {fileID: 324467839372145959}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Fire
   m_TagString: Untagged
   m_Icon: {fileID: 0}

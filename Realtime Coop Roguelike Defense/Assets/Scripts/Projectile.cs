@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    private Vector3 shootDir;
-    private float moveSpeed;
-    private string enemyTag;
-    private float damage;
+    public Vector3 shootDir { private set; get; }
+    public float moveSpeed { private set; get; }
+    public string enemyTag { private set; get; }
+    public float damage { private set; get; }
 
     public void Setup(Vector3 shootDir, float projectileMoveSpeed, string enemTag)
     {
@@ -27,6 +27,12 @@ public class Projectile : MonoBehaviour
 
         Destroy(gameObject, 3f);
     }
+
+    public ProjectileSettings GetProjectileSettings()
+    {
+        return new ProjectileSettings(shootDir, moveSpeed, enemyTag, damage);
+    }
+    
     private void Update()
     {
         transform.position += shootDir * moveSpeed * Time.deltaTime;
@@ -44,5 +50,22 @@ public class Projectile : MonoBehaviour
             }
             Destroy(gameObject);
         }
+    }
+}
+
+[System.Serializable]
+public class ProjectileSettings
+{
+    public Vector3 shootDir { private set; get; }
+    public float moveSpeed { private set; get; }
+    public string enemyTag { private set; get; }
+    public float damage { private set; get; }
+
+    public ProjectileSettings(Vector3 shootDir, float moveSpeed, string enemyTag, float damage)
+    {
+        this.shootDir = shootDir;
+        this.moveSpeed = moveSpeed;
+        this.enemyTag = enemyTag;
+        this.damage = damage;
     }
 }

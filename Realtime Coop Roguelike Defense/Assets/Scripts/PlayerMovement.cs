@@ -2,17 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : AIMovement
 {
 
-    [SerializeField] private float _movementSpeed;
-    public bool canMove = true;
-    private Vector3 directionVec; // direction player is moving
+    protected override void Start()
+    {
 
-    public Vector3 DirectionVec => directionVec;
+    }
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
         Movement();
     }
@@ -26,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
         if (_x == 0 && _y == 0) return;
 
         directionVec = new Vector2(_x, _y);
-        transform.position += directionVec * _movementSpeed * Time.deltaTime;
+        transform.position += directionVec * _moveSpeed * Time.deltaTime;
 
     }
 }

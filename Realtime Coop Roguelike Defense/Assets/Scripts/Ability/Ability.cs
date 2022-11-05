@@ -38,33 +38,6 @@ public class Ability : ScriptableObject
         ab.key = key;
         return ab;
     }
-    ///// <summary>
-    ///// Run Ability on use
-    ///// </summary>
-    ///// <param name="parent">the gameObject Ability Holder is attached to</param>
-    //public virtual void UseAbility(GameObject parent) 
-    //{ 
-    //    isUsingAbility = true; 
-    //    if (cantMoveWhileUsingAbility)
-    //    {
-    //        PlayerMovement pm = parent.GetComponent<PlayerMovement>();
-    //        pm.canMove = false;
-    //    }
-    //}
-
-    ///// <summary>
-    ///// When Ability ends, runs do something
-    ///// </summary>
-    ///// /// <param name="parent">the gameObject Ability Holder is attached to</param>
-    //public virtual void BeginCooldown(GameObject parent) 
-    //{ 
-    //    isUsingAbility = false;
-    //    if (cantMoveWhileUsingAbility)
-    //    {
-    //        PlayerMovement pm = parent.GetComponent<PlayerMovement>();
-    //        pm.canMove = true;
-    //    }
-    //}
 
     /// <summary>
     /// callback event ran when ability starts
@@ -94,6 +67,12 @@ public class Ability : ScriptableObject
         {
             Debug.Log(name + " Ability Ended");
         }
+        if (cantMoveWhileUsingAbility)
+        {
+            PlayerMovement pm = parent.GetComponent<PlayerMovement>();
+            pm.canMove = true;
+        }
+        isUsingAbility = false;
     }
 
     /// <summary>

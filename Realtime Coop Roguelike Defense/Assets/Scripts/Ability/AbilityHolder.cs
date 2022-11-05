@@ -21,21 +21,28 @@ public class AbilityHolder : MonoBehaviour
     public UnityAction<GameObject> OnAbilityRunning; // event that runs while abiilty is active, runs once if it is immediate ability
     public UnityAction<GameObject> OnAbilityEnd; // event that runs on Ability Start
 
-    public void OnEnable()
+    public UnityAction<Collider2D> OnCollisionEntered;
+    public UnityAction<Collider2D> OnCollisionExited;
+
+
+
+    protected virtual void OnEnable()
     {
         OnAbilityStart += ability.OnAbilityStart;
         OnAbilityRunning += ability.OnAbilityRunning;
         OnAbilityEnd += ability.OnAbilityEnd;
+        //OnCollisionEntered += ability.OnCollisionEnterFunc;
     }
 
-    private void OnDisable()
+    protected virtual void OnDisable()
     {
         OnAbilityStart -= ability.OnAbilityStart;
         OnAbilityRunning -= ability.OnAbilityRunning;
         OnAbilityEnd -= ability.OnAbilityEnd;
+        //OnCollisionEntered -= ability.OnCollisionEnterFunc;
     }
 
-    void Update()
+    protected virtual void Update()
     {
         // takes care of cooldown of the ability
         switch(state)
@@ -77,8 +84,9 @@ public class AbilityHolder : MonoBehaviour
                 break;
         }
     }
+
     // Disactivate the skill and run cooldown and set active time to 0
-    private void TurnSkillOff()
+    protected virtual void TurnSkillOff()
     {
         activeTime = 0f;
         isActive = false;

@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 5002576645677474307}
   - component: {fileID: 3704546878845363450}
   - component: {fileID: 8433626943662001951}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Circle
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -125,7 +125,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4536052994981447598}
   - component: {fileID: 8928727038315784914}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}

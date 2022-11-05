@@ -9,17 +9,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d164bd0f0ffed404891c005da9ed86dc, type: 3}
-  m_Name: Dash
+  m_Script: {fileID: 11500000, guid: e293d82e7bae71848ba376ad29c59184, type: 3}
+  m_Name: New Reflect Projectile
   m_EditorClassIdentifier: 
   showLog: 1
-  name: Dash
+  name: Reflection
   coolDownTime: 1
-  activeTime: 0.2
-  description: Dashes toward the direction player is moving
+  activeTime: 300
+  description: Reflects all the projectile type
   abilityType: 0
-  key: 304
+  key: 101
   Instantaneous: 1
   cantMoveWhileUsingAbility: 0
-  dashForce: 15
-  t: 0.069
+  spawningObject: {fileID: 2745431163858999514, guid: e0de025f96298394cb697359e3e4ba1d, type: 3}
+  reflectSpawnOffsetPos: {x: 1, y: 0, z: 0}
+  reflectSize: {x: 0.5, y: 2}

@@ -4,23 +4,27 @@ using UnityEngine;
 
 public class AIMovement : MonoBehaviour
 {
-    [SerializeField] private float _moveSpeed; // AI moving speed
-    [SerializeField] private float rayCheckDist; // distance to check collision with the walls
-    Vector3 moveDir; // AI moving direction
-    bool isRayOn; // switch to turn ray on
-    // Start is called before the first frame update
-    void Start()
+    public bool isPlayer;
+    [SerializeField] protected float _moveSpeed; // AI moving speed
+    [SerializeField] protected float rayCheckDist; // distance to check collision with the walls
+    public Vector3 DirectionVec => directionVec;
+    protected Vector3 directionVec; // direction player is moving
+    protected Vector3 moveDir; // AI moving direction
+    protected bool isRayOn; // switch to turn ray on
+    public bool canMove = true; // 
+
+    protected virtual void Start()
     {
         isRayOn = true;
         ChooseNextDirection();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
+    protected virtual void Update()
+    { 
         transform.position += moveDir * _moveSpeed * Time.deltaTime;
         CheckCollideDirection();
     }
+
     // TODO Can change the movement into shooting ray into direction and 
     // slerp to that position
 
