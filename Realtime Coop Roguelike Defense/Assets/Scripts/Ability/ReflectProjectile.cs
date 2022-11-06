@@ -30,14 +30,29 @@ public class ReflectProjectile : SpawnCollisionAbility
     {
         if (collision2D.gameObject.CompareTag("Projectile"))
         {
+            // give effect maybe 
             Projectile pj = collision2D.gameObject.GetComponent<Projectile>();
-            if (pj != null)
-            {
-                collision2D.gameObject.transform.localScale = new Vector3(collision2D.transform.localScale.x * -1, collision2D.transform.localScale.y, collision2D.transform.localScale.z);
-                float newX = pj.shootDir.x;
-                Vector3 newDir = new Vector3(newX * -1, pj.shootDir.y, 0);
-                pj.Setup(newDir, pj.moveSpeed, pj.enemyTag == "Player" ? "Enemy" : "Player");
+            if (pj == null) return;
 
+            if (isPlayer) // if the shield is by player 
+            {
+                if (pj.enemyTag == "Player")
+                {
+                    collision2D.gameObject.transform.localScale = new Vector3(collision2D.transform.localScale.x * -1, collision2D.transform.localScale.y, collision2D.transform.localScale.z);
+                    float newX = pj.shootDir.x;
+                    Vector3 newDir = new Vector3(newX * -1, pj.shootDir.y, 0);
+                    pj.Setup(newDir, pj.moveSpeed, pj.enemyTag == "Player" ? "Enemy" : "Player");
+                }
+            }
+            else
+            {
+                if (pj.enemyTag == "Enemy")
+                {
+                    collision2D.gameObject.transform.localScale = new Vector3(collision2D.transform.localScale.x * -1, collision2D.transform.localScale.y, collision2D.transform.localScale.z);
+                    float newX = pj.shootDir.x;
+                    Vector3 newDir = new Vector3(newX * -1, pj.shootDir.y, 0);
+                    pj.Setup(newDir, pj.moveSpeed, pj.enemyTag == "Player" ? "Enemy" : "Player");
+                }
             }
         }
     }

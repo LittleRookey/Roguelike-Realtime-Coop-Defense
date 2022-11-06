@@ -13,15 +13,17 @@ MonoBehaviour:
   m_Name: New Forward Shield
   m_EditorClassIdentifier: 
   showLog: 0
-  name: 
-  coolDownTime: 0
-  activeTime: 0
+  isPlayer: 1
+  name: Forward Shield
+  coolDownTime: 1
+  activeTime: 1000
   description: 
   abilityType: 0
-  key: 0
-  Instantaneous: 0
+  key: 102
+  Instantaneous: 1
   cantMoveWhileUsingAbility: 0
-  spawningObject: {fileID: 0}
-  reflectSpawnOffsetPos: {x: 0, y: 0, z: 0}
-  reflectSize: {x: 0, y: 0}
-  _shieldAmount: 0
+  isEnded: 0
+  spawningObject: {fileID: 2745431163858999514, guid: e0de025f96298394cb697359e3e4ba1d, type: 3}
+  objectSpawnOffsetPos: {x: 2, y: 0, z: 0}
+  objectSize: {x: 0.5, y: 2}
+  _shieldAmount: 100

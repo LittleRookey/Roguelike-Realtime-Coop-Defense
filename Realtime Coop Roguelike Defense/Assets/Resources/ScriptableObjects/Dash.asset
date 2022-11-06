@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Dash
   m_EditorClassIdentifier: 
   showLog: 1
+  isPlayer: 1
   name: Dash
   coolDownTime: 1
   activeTime: 0.2
@@ -21,5 +22,6 @@ MonoBehaviour:
   key: 304
   Instantaneous: 1
   cantMoveWhileUsingAbility: 0
+  isEnded: 0
   dashForce: 15
-  t: 0.069
+  speed: 3

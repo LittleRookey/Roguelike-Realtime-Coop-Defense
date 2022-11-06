@@ -36,9 +36,23 @@ public class ForwardShield : SpawnCollisionAbility
         if (collision2D.gameObject.CompareTag("Projectile"))
         {
             // give effect maybe 
-
-            objectHealth.TakeDamage(collision2D.gameObject.GetComponent<Projectile>().damage);
-            Destroy(collision2D.gameObject);
+            Projectile pj = collision2D.gameObject.GetComponent<Projectile>();
+            if (isPlayer) // if the shield is by player 
+            {
+                if (pj.enemyTag == "Player")
+                {
+                    objectHealth.TakeDamage(pj.damage);
+                    Destroy(collision2D.gameObject);
+                }
+            } 
+            else
+            {
+                if (pj.enemyTag == "Enemy")
+                {
+                    objectHealth.TakeDamage(pj.damage);
+                    Destroy(collision2D.gameObject);
+                }
+            }
         }
     }
 }
