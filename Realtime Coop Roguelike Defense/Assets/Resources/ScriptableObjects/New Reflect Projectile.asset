@@ -15,7 +15,7 @@ MonoBehaviour:
   showLog: 1
   name: Reflection
   coolDownTime: 1
-  activeTime: 300
+  activeTime: 0.3
   description: Reflects all the projectile type
   abilityType: 0
   key: 101

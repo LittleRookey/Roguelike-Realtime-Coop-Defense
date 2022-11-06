@@ -25,7 +25,6 @@ public class AbilityHolder : MonoBehaviour
     public UnityAction<Collider2D> OnCollisionExited;
 
 
-
     protected virtual void OnEnable()
     {
         OnAbilityStart += ability.OnAbilityStart;
@@ -63,7 +62,7 @@ public class AbilityHolder : MonoBehaviour
                     activeTime -= Time.deltaTime;
                      
                     OnAbilityRunning?.Invoke(gameObject);
-                    if (Input.GetKeyUp(ability.key) && !ability.Instantaneous) // ends active time when key is unpressed and ability is not instantanous 
+                    if (Input.GetKeyUp(ability.key) && !ability.Instantaneous || ability.isEnded) // ends active time when key is unpressed and ability is not instantanous or isEnded
                     {
                         TurnSkillOff();
                     }

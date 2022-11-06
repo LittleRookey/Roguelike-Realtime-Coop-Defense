@@ -9,8 +9,8 @@ public class DashAbility : Ability
     [SerializeField] private float dashForce;
     private Vector2 normalSpeed;
     Rigidbody2D rb;
-    [Range(0f, 1f)]
-    [SerializeField] private float t;
+    
+    [SerializeField] private float speed;
 
     public override void OnAbilityStart(GameObject parent)
     {
@@ -24,8 +24,8 @@ public class DashAbility : Ability
     public override void OnAbilityRunning(GameObject parent)
     {
         base.OnAbilityRunning(parent);
-        float k = 1.0f - Mathf.Pow(t, Time.deltaTime);
-        rb.velocity = Vector2.Lerp(rb.velocity, Vector2.zero, k);
+        //float k = 1.0f - Mathf.Pow(t, Time.deltaTime);
+        rb.velocity = Vector2.Lerp(rb.velocity, Vector2.zero, speed * Time.deltaTime);
     }
 
     public override void OnAbilityEnd(GameObject parent)

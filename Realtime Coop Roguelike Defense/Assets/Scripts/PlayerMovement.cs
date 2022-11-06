@@ -24,7 +24,7 @@ public class PlayerMovement : AIMovement
         
         if (_x == 0 && _y == 0) return;
 
-        directionVec = new Vector2(_x, _y);
+        directionVec = new Vector2(_x, _y).normalized;
         transform.position += directionVec * _moveSpeed * Time.deltaTime;
 
     }

@@ -28,6 +28,8 @@ public class Ability : ScriptableObject
     protected bool cantMoveWhileUsingAbility; // allows player to move while using ability
     protected bool isUsingAbility; // when player is holding on a key(charge?), 
 
+    public bool isEnded; // boolean value to immediately end the active time of ability and run into cooldown
+
     public Ability Clone() 
     {
         Ability ab = new Ability();
@@ -50,6 +52,7 @@ public class Ability : ScriptableObject
             Debug.Log(name + " Ability Started");
         }
         isUsingAbility = true;
+        isEnded = false;
         if (cantMoveWhileUsingAbility)
         {
             PlayerMovement pm = parent.GetComponent<PlayerMovement>();

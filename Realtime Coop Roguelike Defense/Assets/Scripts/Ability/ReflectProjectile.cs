@@ -41,24 +41,4 @@ public class ReflectProjectile : SpawnCollisionAbility
             }
         }
     }
-    //private void CheckCircle(GameObject parent)
-    //{
-    //    spawnPos = parent.transform.position + pm.DirectionVec + reflectSpawnOffsetPos;
-    //    colliders = Physics2D.OverlapBoxAll(spawnPos, reflectSize, LayerMask.GetMask("Damagable"));
-    //    foreach(Collider2D eachCollider in colliders)
-    //    {
-    //        Projectile pj = eachCollider.GetComponent<Projectile>();
-    //        if (pj != null)
-    //        {
-    //            eachCollider.transform.localScale = new Vector3(eachCollider.transform.localScale.x * -1, eachCollider.transform.localScale.y, eachCollider.transform.localScale.z);
-    //            float newX = pj.shootDir.x;
-    //            Vector3 newDir = new Vector3(newX * -1, pj.shootDir.y, 0);
-    //            pj.Setup(newDir, pj.moveSpeed, pj.enemyTag == "Player" ? "Enemy" : "Player");
-
-    //        }
-    //    }
-            
-    //}
-    
-
 }
