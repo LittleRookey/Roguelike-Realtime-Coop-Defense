@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Threading.Tasks;
 
 [CreateAssetMenu(menuName ="Litkey/Ability/ReflectProjectile")]
 public class ReflectProjectile : SpawnCollisionAbility
@@ -8,10 +9,16 @@ public class ReflectProjectile : SpawnCollisionAbility
     PlayerMovement pm;
     Collider2D[] colliders;
     //[SerializeField] private Vector2 reflectSize;
+    protected override async Task WhilePlayerCantMove(GameObject parent)
+    {
+        chantDone = await OnChantStart(parent);
+    }
 
-    public override void OnAbilityStart(GameObject parent)
+    public override async void OnAbilityStart(GameObject parent)
     {
         base.OnAbilityStart(parent);
+        await WhilePlayerCantMove(parent);
+        collisionHandler.gameObject.SetActive(true);
         pm = parent.GetComponent<PlayerMovement>();
     }
 

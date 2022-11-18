@@ -21,7 +21,10 @@ MonoBehaviour:
   abilityType: 0
   key: 304
   Instantaneous: 1
-  cantMoveWhileUsingAbility: 0
+  cantMoveWhileUsingAbility: 1
   isEnded: 0
+  useChant: 1
+  chant: {fileID: 11400000, guid: 78997339e1923234da14ae2828bb4265, type: 2}
+  chantDone: 1
   dashForce: 15
   speed: 3

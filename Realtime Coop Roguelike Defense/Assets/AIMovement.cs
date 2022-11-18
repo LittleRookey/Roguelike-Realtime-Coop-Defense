@@ -36,7 +36,7 @@ public class AIMovement : MonoBehaviour
         float _newXDir = GetRandomDirectionFloat() * (Random.Range(0, 100f) > 50f ? 1 : -1);
         float _newYDir = GetRandomDirectionFloat() * (Random.Range(0, 100f) > 50f ? 1 : -1);
         moveDir = new Vector2(_newXDir, _newYDir).normalized;
-        Debug.Log("Move Dir: " +moveDir);
+        //Debug.Log("Move Dir: " +moveDir);
     }
 
     private void CheckCollideDirection()
@@ -56,7 +56,7 @@ public class AIMovement : MonoBehaviour
         Debug.DrawLine(transform.position, transform.position + dir * rayCheckDist, Color.blue);
         if (hit2D.collider != null)
         {
-            Debug.Log(hit2D.collider.name);
+            //Debug.Log(hit2D.collider.name);
             if (dir == Vector3.right)
             {
                 moveDir.x = GetRandomDirectionFloat() * -1f;

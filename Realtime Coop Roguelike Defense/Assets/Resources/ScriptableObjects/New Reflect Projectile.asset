@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e293d82e7bae71848ba376ad29c59184, type: 3}
   m_Name: New Reflect Projectile
   m_EditorClassIdentifier: 
-  showLog: 1
+  showLog: 0
   isPlayer: 1
   name: Reflection
   coolDownTime: 1
@@ -23,6 +23,8 @@ MonoBehaviour:
   Instantaneous: 1
   cantMoveWhileUsingAbility: 0
   isEnded: 0
+  useChant: 0
+  chant: {fileID: 0}
   spawningObject: {fileID: 2745431163858999514, guid: e0de025f96298394cb697359e3e4ba1d, type: 3}
   objectSpawnOffsetPos: {x: 2, y: 0, z: 0}
   objectSize: {x: 0.5, y: 2}

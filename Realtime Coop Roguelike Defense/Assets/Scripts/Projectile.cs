@@ -42,7 +42,7 @@ public class Projectile : MonoBehaviour
     {
         if (collision.CompareTag(enemyTag))
         {
-            Debug.Log("Hit " + collision.tag);
+            //Debug.Log("Hit " + collision.tag);
             Health enemyHealth = collision.GetComponent<Health>();
             if (enemyHealth != null)
             {

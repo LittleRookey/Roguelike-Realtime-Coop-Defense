@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Threading.Tasks;
 
 [CreateAssetMenu(menuName ="Litkey/Ability/ForwardShield")]
 public class ForwardShield : SpawnCollisionAbility
@@ -10,9 +11,15 @@ public class ForwardShield : SpawnCollisionAbility
     [SerializeField] private float _shieldAmount;
     Health objectHealth;
 
-    public override void OnAbilityStart(GameObject parent)
+    protected override async Task WhilePlayerCantMove(GameObject parent)
+    {
+        chantDone = await OnChantStart(parent);
+    }
+    public override async void OnAbilityStart(GameObject parent)
     {
         base.OnAbilityStart(parent);
+        await WhilePlayerCantMove(parent);
+        collisionHandler.gameObject.SetActive(true);
         if (spawnedObject.GetComponent<Health>() == null)
             spawnedObject.AddComponent<Health>();
         objectHealth = spawnedObject.GetComponent<Health>();

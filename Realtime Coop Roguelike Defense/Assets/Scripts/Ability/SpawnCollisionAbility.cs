@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using System.Threading.Tasks;
 
 // class that also supports on collision events
 public class SpawnCollisionAbility : Ability
 {
+    [Space]
+    [Header("Spawn Collision Settings")]
     [SerializeField] protected GameObject spawningObject;
     [SerializeField] protected Vector3 objectSpawnOffsetPos;
     [SerializeField] protected Vector2 objectSize;
@@ -15,6 +18,12 @@ public class SpawnCollisionAbility : Ability
     protected CollisionHandler collisionHandler;
 
     protected GameObject spawnedObject;
+
+    protected virtual async Task WhilePlayerCantMove(GameObject parent)
+    {
+        Debug.Log("WWWWWWWWWWWWWWWWWWWWWWWWWWW");
+        await Task.CompletedTask;
+    }
 
     public override void OnAbilityStart(GameObject parent)
     {
@@ -28,7 +37,7 @@ public class SpawnCollisionAbility : Ability
         }
         collisionHandler.OnTriggerEntered += OnTriggerEnteredFunc;
         collisionHandler.transform.localScale = objectSize;
-        collisionHandler.gameObject.SetActive(true);
+        collisionHandler.gameObject.SetActive(false);
         Debug.Log("Called from spawn collision ability start");
     }
 

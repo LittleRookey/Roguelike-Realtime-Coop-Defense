@@ -6,10 +6,11 @@ public class PlayerMovement : AIMovement
 {
     [SerializeField] private Rigidbody2D rb;
     Animator anim;
-
+    
     private void Awake()
     {
         anim = GetComponentInChildren<Animator>();
+        
     }
     protected override void Start()
     {
@@ -30,7 +31,7 @@ public class PlayerMovement : AIMovement
 
         if (_x == 0 && _y == 0) 
         {
-            anim.SetBool("isRun", false);
+            SetIdle();
             return;
             
         }
@@ -39,5 +40,10 @@ public class PlayerMovement : AIMovement
         anim.SetFloat("VelocityX", directionVec.x);
         transform.localPosition += directionVec * _moveSpeed * Time.deltaTime;
 
+    }
+
+    public void SetIdle()
+    {
+        anim.SetBool("isRun", false);
     }
 }

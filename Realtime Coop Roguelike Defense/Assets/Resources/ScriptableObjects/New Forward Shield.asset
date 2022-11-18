@@ -16,13 +16,17 @@ MonoBehaviour:
   isPlayer: 1
   name: Forward Shield
   coolDownTime: 1
-  activeTime: 1000
+  activeTime: 10
   description: 
   abilityType: 0
   key: 102
   Instantaneous: 1
-  cantMoveWhileUsingAbility: 0
+  cantMoveWhileAbilityIsActive: 0
+  cantMoveWhileChanting: 1
   isEnded: 0
+  useChant: 1
+  chant: {fileID: 11400000, guid: e948e53a9433b9845857b662e8e4270c, type: 2}
+  chantDone: 1
   spawningObject: {fileID: 2745431163858999514, guid: e0de025f96298394cb697359e3e4ba1d, type: 3}
   objectSpawnOffsetPos: {x: 2, y: 0, z: 0}
   objectSize: {x: 0.5, y: 2}
