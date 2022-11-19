@@ -25,7 +25,7 @@ public class HealthUI : MonoBehaviour
     private void OnEnable()
     {
         health.OnHit += UpdateHealth;
-        SetHealthBarPos(currentSpawnPos);
+        SetHealthBarPos(currentSpawnPos, Vector3.zero);
     }
 
     private void OnDisable()
@@ -38,17 +38,17 @@ public class HealthUI : MonoBehaviour
         healthBar.fillAmount = fillAmount;
     }
 
-    public void SetHealthBarPos(HealthSpawnPos hsp)
+    public void SetHealthBarPos(HealthSpawnPos hsp, Vector3 add)
     {
         switch(hsp)
         {
             case HealthSpawnPos.Up:
                 currentSpawnPos = HealthSpawnPos.Up;
-                transform.localPosition = upVector;
+                transform.localPosition = upVector + add;
                 break;
             case HealthSpawnPos.Down:
                 currentSpawnPos = HealthSpawnPos.Down;
-                transform.localPosition = downVector;
+                transform.localPosition = downVector + add;
                 break;
         }
     }

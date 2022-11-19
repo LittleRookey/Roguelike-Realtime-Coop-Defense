@@ -27,7 +27,8 @@ MonoBehaviour:
   useChant: 1
   chant: {fileID: 11400000, guid: e948e53a9433b9845857b662e8e4270c, type: 2}
   chantDone: 1
-  spawningObject: {fileID: 2745431163858999514, guid: e0de025f96298394cb697359e3e4ba1d, type: 3}
-  objectSpawnOffsetPos: {x: 2, y: 0, z: 0}
-  objectSize: {x: 0.5, y: 2}
+  spawningObject: {fileID: 6153922180478320278, guid: 98445bcada979b74abf46466efde02ad, type: 3}
+  objectSpawnOffsetPos: {x: 0, y: -0.8, z: 0}
+  objectSize: {x: 1, y: 1}
+  healthBarOffset: {x: 0, y: 3}
   _shieldAmount: 100

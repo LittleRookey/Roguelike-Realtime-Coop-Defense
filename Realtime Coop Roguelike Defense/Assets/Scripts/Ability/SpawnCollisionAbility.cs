@@ -19,6 +19,8 @@ public class SpawnCollisionAbility : Ability
 
     protected GameObject spawnedObject;
 
+    
+
     protected virtual async Task WhilePlayerCantMove(GameObject parent)
     {
         Debug.Log("WWWWWWWWWWWWWWWWWWWWWWWWWWW");

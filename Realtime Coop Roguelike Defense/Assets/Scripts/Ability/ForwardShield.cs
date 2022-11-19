@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 [CreateAssetMenu(menuName ="Litkey/Ability/ForwardShield")]
 public class ForwardShield : SpawnCollisionAbility
 {
+    [Space]
+    [Header("Health Settings")]
+    [SerializeField] private Vector2 healthBarOffset;
     // how shield works
     // shield handles the damage first
     [SerializeField] private float _shieldAmount;
@@ -24,7 +27,7 @@ public class ForwardShield : SpawnCollisionAbility
             spawnedObject.AddComponent<Health>();
         objectHealth = spawnedObject.GetComponent<Health>();
         objectHealth.SetScript(_shieldAmount, true, true);
-        objectHealth.healthUI.SetHealthBarPos(HealthSpawnPos.Up);
+        objectHealth.healthUI.SetHealthBarPos(HealthSpawnPos.Up, healthBarOffset);
     }
 
     public override void OnAbilityRunning(GameObject parent)

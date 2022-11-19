@@ -56,6 +56,7 @@ public class Health : MonoBehaviour
         this.destroyOnDeath = destroyOnZero;
         this.hasHealthBar = hasHealthBar;
 
+        OnHit?.Invoke(_currentHealth/_maxHealth);
         SpawnHealthBar();
     }
 
