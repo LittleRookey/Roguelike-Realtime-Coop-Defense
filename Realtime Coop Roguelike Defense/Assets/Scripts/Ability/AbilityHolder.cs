@@ -98,6 +98,19 @@ public class AbilityHolder : MonoBehaviour
         }
     }
 
+    // Ability for when button is pressed, use ability
+    public void UseAbility()
+    {
+        if (!isActive)
+        {
+            OnAbilityStart?.Invoke(gameObject);
+            state = AbilityState.active;
+            activeTime = ability.activeTime;
+            isActive = true;
+
+        }
+    }
+
     /// <summary>
     /// Returns the Ability holder of the given ability type 
     /// </summary>

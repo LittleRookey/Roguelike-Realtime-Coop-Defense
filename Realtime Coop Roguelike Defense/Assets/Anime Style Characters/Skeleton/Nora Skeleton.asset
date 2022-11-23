@@ -1,0 +1,222 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec8da9418a6bf493e93ef4c7b7575847, type: 3}
+  m_Name: Nora Skeleton
+  m_EditorClassIdentifier: 
+  m_SpriteBones:
+  - m_Name: root
+    m_Guid: c83330928ddcceb478689f6c2d25971f
+    m_Position: {x: 359.85776, y: 125.046005, z: 0}
+    m_Rotation: {x: 0, y: 0, z: 0.70883757, w: 0.7053718}
+    m_Length: 43.865116
+    m_ParentId: -1
+    m_Color:
+      serializedVersion: 2
+      rgba: 4278190335
+  - m_Name: hip
+    m_Guid: 6210986e112553b4f9b0a0149ecb0d65
+    m_Position: {x: 157.33833, y: -3.6496766, z: 0}
+    m_Rotation: {x: 0, y: 0, z: -0.0024414065, w: 0.999997}
+    m_Length: 36.46017
+    m_ParentId: 0
+    m_Color:
+      serializedVersion: 2
+      rgba: 4278255615
+  - m_Name: waist
+    m_Guid: 346245966a0a1224ca891411b21fb71a
+    m_Position: {x: 36.46016, y: -0.0004892672, z: 0}
+    m_Rotation: {x: 0, y: 0, z: -0.006589536, w: 0.9999783}
+    m_Length: 72.9262
+    m_ParentId: 1
+    m_Color:
+      serializedVersion: 2
+      rgba: 4278255360
+  - m_Name: chest
+    m_Guid: 939c6598e03bcc54c904ab77aba9b8c5
+    m_Position: {x: 72.92617, y: 0.00007191491, z: 0}
+    m_Rotation: {x: 0, y: 0, z: 0.013335309, w: 0.99991107}
+    m_Length: 71.009346
+    m_ParentId: 2
+    m_Color:
+      serializedVersion: 2
+      rgba: 4294967040
+  - m_Name: head
+    m_Guid: 0211a2710a26b014489bdd5b9e5b7364
+    m_Position: {x: 71.009346, y: -0.00021308374, z: 0}
+    m_Rotation: {x: 0, y: 0, z: -0.0067539006, w: 0.99997723}
+    m_Length: 117.056015
+    m_ParentId: 3
+    m_Color:
+      serializedVersion: 2
+      rgba: 4294901760
+  - m_Name: shoulder_L
+    m_Guid: d33c0e4f3a9de2846b36cb680697d0e0
+    m_Position: {x: 37.156803, y: -19.69364, z: 0}
+    m_Rotation: {x: 0, y: -0, z: -0.99134606, w: 0.13127482}
+    m_Length: 52.798363
+    m_ParentId: 3
+    m_Color:
+      serializedVersion: 2
+      rgba: 4294902015
+  - m_Name: forearm_L
+    m_Guid: 3606942f53d80ac4db2f03fa18526e98
+    m_Position: {x: 52.79832, y: -0.000021809825, z: 0}
+    m_Rotation: {x: 0, y: 0, z: -0.0004567453, w: 0.99999994}
+    m_Length: 73.85684
+    m_ParentId: 5
+    m_Color:
+      serializedVersion: 2
+      rgba: 4278223103
+  - m_Name: shoulder_R
+    m_Guid: 1729e10afd93f074a9d54101bdb7e14f
+    m_Position: {x: 41.811455, y: 40.696068, z: 0}
+    m_Rotation: {x: 0, y: -0, z: 0.9841293, w: 0.17745297}
+    m_Length: 63.103733
+    m_ParentId: 3
+    m_Color:
+      serializedVersion: 2
+      rgba: 4278255488
+  - m_Name: forearm_R
+    m_Guid: 9edbd744874bd634b884ba8387e79a8b
+    m_Position: {x: 63.103745, y: -0.000016993909, z: 0}
+    m_Rotation: {x: 0, y: 0, z: 0.029924408, w: 0.9995522}
+    m_Length: 75.01892
+    m_ParentId: 7
+    m_Color:
+      serializedVersion: 2
+      rgba: 4286643968
+  - m_Name: legup_L
+    m_Guid: b64f829fa59a326429099b8875743dfc
+    m_Position: {x: 20.148918, y: -26.865479, z: 0}
+    m_Rotation: {x: 0, y: -0, z: -0.99982005, w: 0.018971574}
+    m_Length: 75.853516
+    m_ParentId: 1
+    m_Color:
+      serializedVersion: 2
+      rgba: 4294934528
+  - m_Name: legdown_L
+    m_Guid: 6e606863f9cf53145ba5e95ce44e4f92
+    m_Position: {x: 75.853516, y: 0.00010512043, z: 0}
+    m_Rotation: {x: 0, y: 0, z: 0.045646153, w: 0.9989577}
+    m_Length: 96.75512
+    m_ParentId: 9
+    m_Color:
+      serializedVersion: 2
+      rgba: 4294901888
+  - m_Name: legup_R
+    m_Guid: 73f2784dc7cb1b540a83ba39bdb2adac
+    m_Position: {x: 23.027634, y: 25.905802, z: 0}
+    m_Rotation: {x: 0, y: -0, z: 0.99947554, w: 0.032384768}
+    m_Length: 81.83146
+    m_ParentId: 1
+    m_Color:
+      serializedVersion: 2
+      rgba: 4286578943
+  - m_Name: legdown_R
+    m_Guid: 2b660b6dbedd3e44da86163220b42704
+    m_Position: {x: 81.83146, y: -0.000040311905, z: 0}
+    m_Rotation: {x: 0, y: 0, z: -0.059042413, w: 0.99825555}
+    m_Length: 97.46973
+    m_ParentId: 11
+    m_Color:
+      serializedVersion: 2
+      rgba: 4278255615
+  - m_Name: tool_R
+    m_Guid: b15814455b762d74a81f7a56938f8d25
+    m_Position: {x: 76.594536, y: -7.0650764, z: 0}
+    m_Rotation: {x: 0, y: -0, z: -0.9698176, w: 0.24383181}
+    m_Length: 79.2872
+    m_ParentId: 8
+    m_Color:
+      serializedVersion: 2
+      rgba: 4278255360
+  - m_Name: bottoms_1
+    m_Guid: 1d6a7f845272c4a40b2113c9323e3604
+    m_Position: {x: 0.64783233, y: -17.448576, z: 0}
+    m_Rotation: {x: 0, y: -0, z: -0.9986531, w: 0.051884785}
+    m_Length: 34.94183
+    m_ParentId: 2
+    m_Color:
+      serializedVersion: 2
+      rgba: 4294967040
+  - m_Name: bottoms_2
+    m_Guid: 93b44f5f8c66d8240a54ba31f3e63bab
+    m_Position: {x: 2.3404143, y: -39.221066, z: 0}
+    m_Rotation: {x: 0, y: -0, z: -0.98141944, w: 0.19187464}
+    m_Length: 34.72549
+    m_ParentId: 2
+    m_Color:
+      serializedVersion: 2
+      rgba: 4294901760
+  - m_Name: bottoms_3
+    m_Guid: b5687fbf779f47f4997410c659766c27
+    m_Position: {x: 1.5126892, y: 23.691631, z: 0}
+    m_Rotation: {x: 0, y: -0, z: 0.98749036, w: 0.15767936}
+    m_Length: 41.23932
+    m_ParentId: 2
+    m_Color:
+      serializedVersion: 2
+      rgba: 4294902015
+  - m_Name: bottoms_4
+    m_Guid: d926d74f71e4d71488443e2084b6d3c3
+    m_Position: {x: 6.47025, y: 47.66081, z: 0}
+    m_Rotation: {x: 0, y: -0, z: 0.9627839, w: 0.27027255}
+    m_Length: 39.009975
+    m_ParentId: 2
+    m_Color:
+      serializedVersion: 2
+      rgba: 4278190335
+  - m_Name: hat
+    m_Guid: 80ab745d6bd4a2b4dad91881231adf12
+    m_Position: {x: 83.80524, y: 23.564976, z: 0}
+    m_Rotation: {x: 0, y: 0, z: 0.22819105, w: 0.97361636}
+    m_Length: 119.00392
+    m_ParentId: 4
+    m_Color:
+      serializedVersion: 2
+      rgba: 4278255488
+  - m_Name: hair_1
+    m_Guid: 67efbbf7ae1f7c346ae45e4c7a07b9e7
+    m_Position: {x: 92.41762, y: 11.857167, z: 0}
+    m_Rotation: {x: 0, y: -0, z: 0.99918103, w: 0.04046368}
+    m_Length: 90.52442
+    m_ParentId: 4
+    m_Color:
+      serializedVersion: 2
+      rgba: 4286643968
+  - m_Name: tool_L
+    m_Guid: 84fa027e5bdb7a14c8b8d0ed25b972c0
+    m_Position: {x: 73.85685, y: 0.0007988612, z: 0}
+    m_Rotation: {x: 0, y: 0, z: 0.9537502, w: 0.30060062}
+    m_Length: 76.151955
+    m_ParentId: 6
+    m_Color:
+      serializedVersion: 2
+      rgba: 4294934528
+  - m_Name: hair_2
+    m_Guid: 162ec10dd4c1f764d945f443926b189b
+    m_Position: {x: 90.524445, y: 0.000058094174, z: 0}
+    m_Rotation: {x: 0, y: 0, z: -0.058461614, w: 0.99828964}
+    m_Length: 69.77762
+    m_ParentId: 19
+    m_Color:
+      serializedVersion: 2
+      rgba: 4294901888
+  - m_Name: hair_3
+    m_Guid: 475f535b018e99c45b3a974a98ccf87f
+    m_Position: {x: 69.77764, y: -0.000038749284, z: 0}
+    m_Rotation: {x: 0, y: 0, z: -0.054340623, w: 0.9985225}
+    m_Length: 62.283615
+    m_ParentId: 21
+    m_Color:
+      serializedVersion: 2
+      rgba: 4286578943

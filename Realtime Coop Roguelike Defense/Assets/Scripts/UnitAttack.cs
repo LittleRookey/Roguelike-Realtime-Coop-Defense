@@ -6,6 +6,7 @@ using UnityEngine.Events;
 
 public class UnitAttack : MonoBehaviour
 {
+    
     [Header("Unit Settings")]
     [SerializeField] private float _attackDamage = 10f;
     [SerializeField] public float _attackRange;
@@ -13,8 +14,9 @@ public class UnitAttack : MonoBehaviour
 
     [Header("Projectile Settings")]
     public bool shootStraight;
-    [SerializeField] private float projectileSpeed = 10f;
+    [SerializeField] private float projectileSpeed = 150f;
     [SerializeField] private GameObject projectile;
+    [SerializeField] private GameObject onHitVFX;
 
     [Header("Other Settings")]
     public string enemyTag;
@@ -48,6 +50,7 @@ public class UnitAttack : MonoBehaviour
         var proj = Instantiate(projectile, transform.position + lookDir, Quaternion.identity);
         proj.transform.rotation = UtilClass.GetRotationFromDirection(dirToEnemy);
         proj.GetComponent<Projectile>().Setup(dirToEnemy, projectileSpeed, enemyTag, _attackDamage);
+        if (onHitVFX) proj.GetComponent<Projectile>().Setup(dirToEnemy, projectileSpeed, enemyTag, _attackDamage, onHitVFX);
     }
 
 

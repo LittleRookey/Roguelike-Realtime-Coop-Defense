@@ -13,7 +13,12 @@ MonoBehaviour:
   m_Name: ShieldChant
   m_EditorClassIdentifier: 
   chantTextObject: {fileID: 8773017122589767001, guid: caf2a2f23d244604da8d252cfe5182b3, type: 3}
-  chantOffset: {x: -0.01, y: 4.5}
-  chantSentence: "\uC2E4\uB4DC\uC2E4\uB4DC\uC2E4\uB4DC\uC2E4\uB4DC"
+  chantOffset: {x: -0.01, y: 1.46}
+  chantSentence: "\uC2E4\uB4DC, \uC2E4\uB4DC, \uC2E4\uB4DC, \uC2E4\uB4DC\n\uC6B0\uC655\uC2E4\uB4DC\n\uB450\uBC88\uC9F8
+    \uC2E4\uB4DC\n\uC138\uBC88\uC9F8, \uC2E4\uB4DC"
+  readMode: 0
   textColor: {r: 1, g: 1, b: 1, a: 1}
-  readSpeed: 0.5
+  readSpeed: 0.1
+  commaWaitTime: 0.5
+  newLineWaitTime: 1
+  delayEndChantTime: 1
