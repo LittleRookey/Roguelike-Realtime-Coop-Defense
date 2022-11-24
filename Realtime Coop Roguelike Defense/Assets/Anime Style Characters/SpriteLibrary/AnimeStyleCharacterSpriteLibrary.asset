@@ -1,0 +1,556 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bf7c34a0dc4e6348bea04faa70406ee, type: 3}
+  m_Name: AnimeStyleCharacterSpriteLibrary
+  m_EditorClassIdentifier: 
+  m_Labels:
+  - m_Name: Back Hair R
+    m_Hash: -1162379091
+    m_CategoryList:
+    - m_Name: archer
+      m_Hash: 950961012
+      m_Sprite: {fileID: 1583630725623629058, guid: 13736c9002daea740ad93a243f8b9d27, type: 3}
+    - m_Name: none
+      m_Hash: 2140143823
+      m_Sprite: {fileID: -4786820621780231598, guid: 79301d785e12e034393adab5fb7976c2, type: 3}
+    - m_Name: priest
+      m_Hash: 1656369567
+      m_Sprite: {fileID: 4349774585789924302, guid: 6bc9854412218d842994a50fa48df6a7, type: 3}
+    - m_Name: warror
+      m_Hash: -912625290
+      m_Sprite: {fileID: 4414607325917658809, guid: 9c5e7145149ccfb449d0a66a0b44a89e, type: 3}
+    - m_Name: witch
+      m_Hash: -1782619447
+      m_Sprite: {fileID: -4786820621780231598, guid: 87637e58e7948be4884309e301030f8b, type: 3}
+  - m_Name: Bottoms
+    m_Hash: 92392980
+    m_CategoryList:
+    - m_Name: archer
+      m_Hash: 950961012
+      m_Sprite: {fileID: 279164031230423446, guid: 13736c9002daea740ad93a243f8b9d27, type: 3}
+    - m_Name: none
+      m_Hash: 2140143823
+      m_Sprite: {fileID: -1492849483317795846, guid: 79301d785e12e034393adab5fb7976c2, type: 3}
+    - m_Name: priest
+      m_Hash: 1656369567
+      m_Sprite: {fileID: -14549622554969774, guid: 6bc9854412218d842994a50fa48df6a7, type: 3}
+    - m_Name: warror
+      m_Hash: -912625290
+      m_Sprite: {fileID: 6130213705496797698, guid: 9c5e7145149ccfb449d0a66a0b44a89e, type: 3}
+    - m_Name: witch
+      m_Hash: -1782619447
+      m_Sprite: {fileID: -1492849483317795846, guid: 87637e58e7948be4884309e301030f8b, type: 3}
+  - m_Name: Front Hair
+    m_Hash: 818544773
+    m_CategoryList:
+    - m_Name: archer
+      m_Hash: 950961012
+      m_Sprite: {fileID: -4499964684160798295, guid: 13736c9002daea740ad93a243f8b9d27, type: 3}
+    - m_Name: none
+      m_Hash: 2140143823
+      m_Sprite: {fileID: -4998701726846520723, guid: 79301d785e12e034393adab5fb7976c2, type: 3}
+    - m_Name: priest
+      m_Hash: 1656369567
+      m_Sprite: {fileID: 8814224473059860531, guid: 6bc9854412218d842994a50fa48df6a7, type: 3}
+    - m_Name: warror
+      m_Hash: -912625290
+      m_Sprite: {fileID: -1440226837251161851, guid: 9c5e7145149ccfb449d0a66a0b44a89e, type: 3}
+    - m_Name: witch
+      m_Hash: -1782619447
+      m_Sprite: {fileID: -4998701726846520723, guid: 87637e58e7948be4884309e301030f8b, type: 3}
+  - m_Name: Hat
+    m_Hash: -1438192983
+    m_CategoryList:
+    - m_Name: archer
+      m_Hash: 950961012
+      m_Sprite: {fileID: -8353505377382540744, guid: 13736c9002daea740ad93a243f8b9d27, type: 3}
+    - m_Name: none
+      m_Hash: 2140143823
+      m_Sprite: {fileID: -955564926645461614, guid: 79301d785e12e034393adab5fb7976c2, type: 3}
+    - m_Name: priest
+      m_Hash: 1656369567
+      m_Sprite: {fileID: -992777951365126288, guid: 6bc9854412218d842994a50fa48df6a7, type: 3}
+    - m_Name: warror
+      m_Hash: -912625290
+      m_Sprite: {fileID: -727186738683816221, guid: 9c5e7145149ccfb449d0a66a0b44a89e, type: 3}
+    - m_Name: witch
+      m_Hash: -1782619447
+      m_Sprite: {fileID: -955564926645461614, guid: 87637e58e7948be4884309e301030f8b, type: 3}
+  - m_Name: Head Accessory
+    m_Hash: 1768524881
+    m_CategoryList:
+    - m_Name: archer
+      m_Hash: 950961012
+      m_Sprite: {fileID: 6341754885170433131, guid: 13736c9002daea740ad93a243f8b9d27, type: 3}
+    - m_Name: none
+      m_Hash: 2140143823
+      m_Sprite: {fileID: 7407901834465235038, guid: 79301d785e12e034393adab5fb7976c2, type: 3}
+    - m_Name: priest
+      m_Hash: 1656369567
+      m_Sprite: {fileID: 8209535432561592388, guid: 6bc9854412218d842994a50fa48df6a7, type: 3}
+    - m_Name: warror
+      m_Hash: -912625290
+      m_Sprite: {fileID: -1867447152604390361, guid: 9c5e7145149ccfb449d0a66a0b44a89e, type: 3}
+    - m_Name: witch
+      m_Hash: -1782619447
+      m_Sprite: {fileID: 7407901834465235038, guid: 87637e58e7948be4884309e301030f8b, type: 3}
+  - m_Name: Inner Bottoms
+    m_Hash: 2125301938
+    m_CategoryList:
+    - m_Name: archer
+      m_Hash: 950961012
+      m_Sprite: {fileID: -2566211147407812936, guid: 13736c9002daea740ad93a243f8b9d27, type: 3}
+    - m_Name: none
+      m_Hash: 2140143823
+      m_Sprite: {fileID: 5817942896363493985, guid: 79301d785e12e034393adab5fb7976c2, type: 3}
+    - m_Name: priest
+      m_Hash: 1656369567
+      m_Sprite: {fileID: -3681790962339764778, guid: 6bc9854412218d842994a50fa48df6a7, type: 3}
+    - m_Name: warror
+      m_Hash: -912625290
+      m_Sprite: {fileID: 1107525456933232336, guid: 9c5e7145149ccfb449d0a66a0b44a89e, type: 3}
+    - m_Name: witch
+      m_Hash: -1782619447
+      m_Sprite: {fileID: 5817942896363493985, guid: 87637e58e7948be4884309e301030f8b, type: 3}
+  - m_Name: Inner Tops
+    m_Hash: 1872167351
+    m_CategoryList:
+    - m_Name: archer
+      m_Hash: 950961012
+      m_Sprite: {fileID: -7718439953827075886, guid: 13736c9002daea740ad93a243f8b9d27, type: 3}
+    - m_Name: none
+      m_Hash: 2140143823
+      m_Sprite: {fileID: -4183135788370480726, guid: 79301d785e12e034393adab5fb7976c2, type: 3}
+    - m_Name: priest
+      m_Hash: 1656369567
+      m_Sprite: {fileID: -8836018191271536830, guid: 6bc9854412218d842994a50fa48df6a7, type: 3}
+    - m_Name: warror
+      m_Hash: -912625290
+      m_Sprite: {fileID: 4452532834144985490, guid: 9c5e7145149ccfb449d0a66a0b44a89e, type: 3}
+    - m_Name: witch
+      m_Hash: -1782619447
+      m_Sprite: {fileID: -4183135788370480726, guid: 87637e58e7948be4884309e301030f8b, type: 3}
+  - m_Name: Lower Stocking L
+    m_Hash: 1738923449
+    m_CategoryList:
+    - m_Name: archer
+      m_Hash: 950961012
+      m_Sprite: {fileID: -6658283204920658756, guid: 13736c9002daea740ad93a243f8b9d27, type: 3}
+    - m_Name: none
+      m_Hash: 2140143823
+      m_Sprite: {fileID: -6200650555560353067, guid: 79301d785e12e034393adab5fb7976c2, type: 3}
+    - m_Name: priest
+      m_Hash: 1656369567
+      m_Sprite: {fileID: -8918838484287329075, guid: 6bc9854412218d842994a50fa48df6a7, type: 3}
+    - m_Name: warror
+      m_Hash: -912625290
+      m_Sprite: {fileID: -8535514446641477936, guid: 9c5e7145149ccfb449d0a66a0b44a89e, type: 3}
+    - m_Name: witch
+      m_Hash: -1782619447
+      m_Sprite: {fileID: -6200650555560353067, guid: 87637e58e7948be4884309e301030f8b, type: 3}
+  - m_Name: Lower Stocking R
+    m_Hash: -1649745702
+    m_CategoryList:
+    - m_Name: archer
+      m_Hash: 950961012
+      m_Sprite: {fileID: 1843900639492589796, guid: 13736c9002daea740ad93a243f8b9d27, type: 3}
+    - m_Name: none
+      m_Hash: 2140143823
+      m_Sprite: {fileID: -4190441465134673625, guid: 79301d785e12e034393adab5fb7976c2, type: 3}
+    - m_Name: priest
+      m_Hash: 1656369567
+      m_Sprite: {fileID: 7010003512827057477, guid: 6bc9854412218d842994a50fa48df6a7, type: 3}
+    - m_Name: warror
+      m_Hash: -912625290
+      m_Sprite: {fileID: 8640778704088390124, guid: 9c5e7145149ccfb449d0a66a0b44a89e, type: 3}
+    - m_Name: witch
+      m_Hash: -1782619447
+      m_Sprite: {fileID: -4190441465134673625, guid: 87637e58e7948be4884309e301030f8b, type: 3}
+  - m_Name: Shadow
+    m_Hash: 1926924059
+    m_CategoryList:
+    - m_Name: archer
+      m_Hash: 950961012
+      m_Sprite: {fileID: -2459089438753176696, guid: 13736c9002daea740ad93a243f8b9d27, type: 3}
+    - m_Name: none
+      m_Hash: 2140143823
+      m_Sprite: {fileID: -6800174172686016527, guid: 79301d785e12e034393adab5fb7976c2, type: 3}
+    - m_Name: priest
+      m_Hash: 1656369567
+      m_Sprite: {fileID: 5133100700644089125, guid: 6bc9854412218d842994a50fa48df6a7, type: 3}
+    - m_Name: warror
+      m_Hash: -912625290
+      m_Sprite: {fileID: -5710191393532656807, guid: 9c5e7145149ccfb449d0a66a0b44a89e, type: 3}
+    - m_Name: witch
+      m_Hash: -1782619447
+      m_Sprite: {fileID: -6800174172686016527, guid: 87637e58e7948be4884309e301030f8b, type: 3}
+  - m_Name: Shoe L
+    m_Hash: 1429020913
+    m_CategoryList:
+    - m_Name: archer
+      m_Hash: 950961012
+      m_Sprite: {fileID: 8410706383340356918, guid: 13736c9002daea740ad93a243f8b9d27, type: 3}
+    - m_Name: none
+      m_Hash: 2140143823
+      m_Sprite: {fileID: 2148123452184558099, guid: 79301d785e12e034393adab5fb7976c2, type: 3}
+    - m_Name: priest
+      m_Hash: 1656369567
+      m_Sprite: {fileID: 5146080599104355598, guid: 6bc9854412218d842994a50fa48df6a7, type: 3}
+    - m_Name: warror
+      m_Hash: -912625290
+      m_Sprite: {fileID: -8369493663548682348, guid: 9c5e7145149ccfb449d0a66a0b44a89e, type: 3}
+    - m_Name: witch
+      m_Hash: -1782619447
+      m_Sprite: {fileID: 2148123452184558099, guid: 87637e58e7948be4884309e301030f8b, type: 3}
+  - m_Name: Shoe R
+    m_Hash: -1356718702
+    m_CategoryList:
+    - m_Name: archer
+      m_Hash: 950961012
+      m_Sprite: {fileID: -2767596357323766742, guid: 13736c9002daea740ad93a243f8b9d27, type: 3}
+    - m_Name: none
+      m_Hash: 2140143823
+      m_Sprite: {fileID: -8738312756568611099, guid: 79301d785e12e034393adab5fb7976c2, type: 3}
+    - m_Name: priest
+      m_Hash: 1656369567
+      m_Sprite: {fileID: -743378315626386584, guid: 6bc9854412218d842994a50fa48df6a7, type: 3}
+    - m_Name: warror
+      m_Hash: -912625290
+      m_Sprite: {fileID: 1382134546061838256, guid: 9c5e7145149ccfb449d0a66a0b44a89e, type: 3}
+    - m_Name: witch
+      m_Hash: -1782619447
+      m_Sprite: {fileID: -8738312756568611099, guid: 87637e58e7948be4884309e301030f8b, type: 3}
+  - m_Name: Side Hair L
+    m_Hash: 1308400074
+    m_CategoryList:
+    - m_Name: archer
+      m_Hash: 950961012
+      m_Sprite: {fileID: -2756733850681893379, guid: 13736c9002daea740ad93a243f8b9d27, type: 3}
+    - m_Name: none
+      m_Hash: 2140143823
+      m_Sprite: {fileID: 5046488439571193786, guid: 79301d785e12e034393adab5fb7976c2, type: 3}
+    - m_Name: priest
+      m_Hash: 1656369567
+      m_Sprite: {fileID: -6520164778906048327, guid: 6bc9854412218d842994a50fa48df6a7, type: 3}
+    - m_Name: warror
+      m_Hash: -912625290
+      m_Sprite: {fileID: -6587056178149831239, guid: 9c5e7145149ccfb449d0a66a0b44a89e, type: 3}
+    - m_Name: witch
+      m_Hash: -1782619447
+      m_Sprite: {fileID: 5046488439571193786, guid: 87637e58e7948be4884309e301030f8b, type: 3}
+  - m_Name: Side Hair R
+    m_Hash: -1208769367
+    m_CategoryList:
+    - m_Name: archer
+      m_Hash: 950961012
+      m_Sprite: {fileID: -1666265153655800518, guid: 13736c9002daea740ad93a243f8b9d27, type: 3}
+    - m_Name: none
+      m_Hash: 2140143823
+      m_Sprite: {fileID: -3274915684157526421, guid: 79301d785e12e034393adab5fb7976c2, type: 3}
+    - m_Name: priest
+      m_Hash: 1656369567
+      m_Sprite: {fileID: 8882796150046101849, guid: 6bc9854412218d842994a50fa48df6a7, type: 3}
+    - m_Name: warror
+      m_Hash: -912625290
+      m_Sprite: {fileID: -7561990288934708361, guid: 9c5e7145149ccfb449d0a66a0b44a89e, type: 3}
+    - m_Name: witch
+      m_Hash: -1782619447
+      m_Sprite: {fileID: -3274915684157526421, guid: 87637e58e7948be4884309e301030f8b, type: 3}
+  - m_Name: Sleeve Lower L
+    m_Hash: 463964783
+    m_CategoryList:
+    - m_Name: archer
+      m_Hash: 950961012
+      m_Sprite: {fileID: -3280989162829393957, guid: 13736c9002daea740ad93a243f8b9d27, type: 3}
+    - m_Name: none
+      m_Hash: 2140143823
+      m_Sprite: {fileID: 4446378920144031601, guid: 79301d785e12e034393adab5fb7976c2, type: 3}
+    - m_Name: priest
+      m_Hash: 1656369567
+      m_Sprite: {fileID: 6530536701096981501, guid: 6bc9854412218d842994a50fa48df6a7, type: 3}
+    - m_Name: warror
+      m_Hash: -912625290
+      m_Sprite: {fileID: 8401661112992350702, guid: 9c5e7145149ccfb449d0a66a0b44a89e, type: 3}
+    - m_Name: witch
+      m_Hash: -1782619447
+      m_Sprite: {fileID: 4446378920144031601, guid: 87637e58e7948be4884309e301030f8b, type: 3}
+  - m_Name: Sleeve Lower R
+    m_Hash: -509036788
+    m_CategoryList:
+    - m_Name: archer
+      m_Hash: 950961012
+      m_Sprite: {fileID: -2944784879940429769, guid: 13736c9002daea740ad93a243f8b9d27, type: 3}
+    - m_Name: none
+      m_Hash: 2140143823
+      m_Sprite: {fileID: 6978577094845567962, guid: 79301d785e12e034393adab5fb7976c2, type: 3}
+    - m_Name: priest
+      m_Hash: 1656369567
+      m_Sprite: {fileID: -6613267499593447805, guid: 6bc9854412218d842994a50fa48df6a7, type: 3}
+    - m_Name: warror
+      m_Hash: -912625290
+      m_Sprite: {fileID: 4784635723242303405, guid: 9c5e7145149ccfb449d0a66a0b44a89e, type: 3}
+    - m_Name: witch
+      m_Hash: -1782619447
+      m_Sprite: {fileID: 6978577094845567962, guid: 87637e58e7948be4884309e301030f8b, type: 3}
+  - m_Name: Sleeve Upper L
+    m_Hash: -1455341780
+    m_CategoryList:
+    - m_Name: archer
+      m_Hash: 950961012
+      m_Sprite: {fileID: -3704147805967048484, guid: 13736c9002daea740ad93a243f8b9d27, type: 3}
+    - m_Name: none
+      m_Hash: 2140143823
+      m_Sprite: {fileID: 7166055480000478603, guid: 79301d785e12e034393adab5fb7976c2, type: 3}
+    - m_Name: priest
+      m_Hash: 1656369567
+      m_Sprite: {fileID: -9092233338055131597, guid: 6bc9854412218d842994a50fa48df6a7, type: 3}
+    - m_Name: warror
+      m_Hash: -912625290
+      m_Sprite: {fileID: -8425883401068416548, guid: 9c5e7145149ccfb449d0a66a0b44a89e, type: 3}
+    - m_Name: witch
+      m_Hash: -1782619447
+      m_Sprite: {fileID: 7166055480000478603, guid: 87637e58e7948be4884309e301030f8b, type: 3}
+  - m_Name: Sleeve Upper R
+    m_Hash: 1397621327
+    m_CategoryList:
+    - m_Name: archer
+      m_Hash: 950961012
+      m_Sprite: {fileID: -4888315791670337175, guid: 13736c9002daea740ad93a243f8b9d27, type: 3}
+    - m_Name: none
+      m_Hash: 2140143823
+      m_Sprite: {fileID: 1083394896608567087, guid: 79301d785e12e034393adab5fb7976c2, type: 3}
+    - m_Name: priest
+      m_Hash: 1656369567
+      m_Sprite: {fileID: 3983368207587642568, guid: 6bc9854412218d842994a50fa48df6a7, type: 3}
+    - m_Name: warror
+      m_Hash: -912625290
+      m_Sprite: {fileID: 5005215252221571026, guid: 9c5e7145149ccfb449d0a66a0b44a89e, type: 3}
+    - m_Name: witch
+      m_Hash: -1782619447
+      m_Sprite: {fileID: 1083394896608567087, guid: 87637e58e7948be4884309e301030f8b, type: 3}
+  - m_Name: Tops
+    m_Hash: -1064070524
+    m_CategoryList:
+    - m_Name: archer
+      m_Hash: 950961012
+      m_Sprite: {fileID: -5506197624446478613, guid: 13736c9002daea740ad93a243f8b9d27, type: 3}
+    - m_Name: none
+      m_Hash: 2140143823
+      m_Sprite: {fileID: -2413335324223297397, guid: 79301d785e12e034393adab5fb7976c2, type: 3}
+    - m_Name: priest
+      m_Hash: 1656369567
+      m_Sprite: {fileID: 3780515335789105416, guid: 6bc9854412218d842994a50fa48df6a7, type: 3}
+    - m_Name: warror
+      m_Hash: -912625290
+      m_Sprite: {fileID: 9129964847441363527, guid: 9c5e7145149ccfb449d0a66a0b44a89e, type: 3}
+    - m_Name: witch
+      m_Hash: -1782619447
+      m_Sprite: {fileID: -2413335324223297397, guid: 87637e58e7948be4884309e301030f8b, type: 3}
+  - m_Name: Upper Body Accessory
+    m_Hash: -1158360754
+    m_CategoryList:
+    - m_Name: archer
+      m_Hash: 950961012
+      m_Sprite: {fileID: 317997627094568047, guid: 13736c9002daea740ad93a243f8b9d27, type: 3}
+    - m_Name: none
+      m_Hash: 2140143823
+      m_Sprite: {fileID: 8527145708172911421, guid: 79301d785e12e034393adab5fb7976c2, type: 3}
+    - m_Name: priest
+      m_Hash: 1656369567
+      m_Sprite: {fileID: 2309193322397463655, guid: 6bc9854412218d842994a50fa48df6a7, type: 3}
+    - m_Name: warror
+      m_Hash: -912625290
+      m_Sprite: {fileID: 7608076000756523059, guid: 9c5e7145149ccfb449d0a66a0b44a89e, type: 3}
+    - m_Name: witch
+      m_Hash: -1782619447
+      m_Sprite: {fileID: 8527145708172911421, guid: 87637e58e7948be4884309e301030f8b, type: 3}
+  - m_Name: Upper Stocking L
+    m_Hash: 702421995
+    m_CategoryList:
+    - m_Name: archer
+      m_Hash: 950961012
+      m_Sprite: {fileID: 6469112015792656243, guid: 13736c9002daea740ad93a243f8b9d27, type: 3}
+    - m_Name: none
+      m_Hash: 2140143823
+      m_Sprite: {fileID: -7130225319208357360, guid: 79301d785e12e034393adab5fb7976c2, type: 3}
+    - m_Name: priest
+      m_Hash: 1656369567
+      m_Sprite: {fileID: -1233627383546733233, guid: 6bc9854412218d842994a50fa48df6a7, type: 3}
+    - m_Name: warror
+      m_Hash: -912625290
+      m_Sprite: {fileID: 7854042509501148284, guid: 9c5e7145149ccfb449d0a66a0b44a89e, type: 3}
+    - m_Name: witch
+      m_Hash: -1782619447
+      m_Sprite: {fileID: -7130225319208357360, guid: 87637e58e7948be4884309e301030f8b, type: 3}
+  - m_Name: Upper Stocking R
+    m_Hash: -741267832
+    m_CategoryList:
+    - m_Name: archer
+      m_Hash: 950961012
+      m_Sprite: {fileID: -3196869749480993496, guid: 13736c9002daea740ad93a243f8b9d27, type: 3}
+    - m_Name: none
+      m_Hash: 2140143823
+      m_Sprite: {fileID: -7383878820919217089, guid: 79301d785e12e034393adab5fb7976c2, type: 3}
+    - m_Name: priest
+      m_Hash: 1656369567
+      m_Sprite: {fileID: -2561437910909672941, guid: 6bc9854412218d842994a50fa48df6a7, type: 3}
+    - m_Name: warror
+      m_Hash: -912625290
+      m_Sprite: {fileID: -2843024349793851575, guid: 9c5e7145149ccfb449d0a66a0b44a89e, type: 3}
+    - m_Name: witch
+      m_Hash: -1782619447
+      m_Sprite: {fileID: -7383878820919217089, guid: 87637e58e7948be4884309e301030f8b, type: 3}
+  - m_Name: Weapon L
+    m_Hash: 316101282
+    m_CategoryList:
+    - m_Name: archer
+      m_Hash: 950961012
+      m_Sprite: {fileID: -38225229992089230, guid: 13736c9002daea740ad93a243f8b9d27, type: 3}
+    - m_Name: none
+      m_Hash: 2140143823
+      m_Sprite: {fileID: -7850843084439590928, guid: 79301d785e12e034393adab5fb7976c2, type: 3}
+    - m_Name: priest
+      m_Hash: 1656369567
+      m_Sprite: {fileID: 884892175702332494, guid: 6bc9854412218d842994a50fa48df6a7, type: 3}
+    - m_Name: warror
+      m_Hash: -912625290
+      m_Sprite: {fileID: 5149093544426609625, guid: 9c5e7145149ccfb449d0a66a0b44a89e, type: 3}
+    - m_Name: witch
+      m_Hash: -1782619447
+      m_Sprite: {fileID: -7850843084439590928, guid: 87637e58e7948be4884309e301030f8b, type: 3}
+  - m_Name: Weapon R
+    m_Hash: -388468799
+    m_CategoryList:
+    - m_Name: archer
+      m_Hash: 950961012
+      m_Sprite: {fileID: 5197031160829354944, guid: 13736c9002daea740ad93a243f8b9d27, type: 3}
+    - m_Name: none
+      m_Hash: 2140143823
+      m_Sprite: {fileID: 5890445332428243082, guid: 79301d785e12e034393adab5fb7976c2, type: 3}
+    - m_Name: priest
+      m_Hash: 1656369567
+      m_Sprite: {fileID: -7149866186587048636, guid: 6bc9854412218d842994a50fa48df6a7, type: 3}
+    - m_Name: warror
+      m_Hash: -912625290
+      m_Sprite: {fileID: -2771615451649492760, guid: 9c5e7145149ccfb449d0a66a0b44a89e, type: 3}
+    - m_Name: witch
+      m_Hash: -1782619447
+      m_Sprite: {fileID: 5890445332428243082, guid: 87637e58e7948be4884309e301030f8b, type: 3}
+  - m_Name: Back Hair L
+    m_Hash: 1085849038
+    m_CategoryList:
+    - m_Name: archer
+      m_Hash: 950961012
+      m_Sprite: {fileID: -5609016669811161418, guid: 13736c9002daea740ad93a243f8b9d27, type: 3}
+    - m_Name: none
+      m_Hash: 2140143823
+      m_Sprite: {fileID: -571051647026758974, guid: 79301d785e12e034393adab5fb7976c2, type: 3}
+    - m_Name: priest
+      m_Hash: 1656369567
+      m_Sprite: {fileID: 5000996178559864767, guid: 6bc9854412218d842994a50fa48df6a7, type: 3}
+    - m_Name: warror
+      m_Hash: -912625290
+      m_Sprite: {fileID: 4130180924705132216, guid: 9c5e7145149ccfb449d0a66a0b44a89e, type: 3}
+    - m_Name: witch
+      m_Hash: -1782619447
+      m_Sprite: {fileID: -571051647026758974, guid: 87637e58e7948be4884309e301030f8b, type: 3}
+  - m_Name: Forearm L
+    m_Hash: -1375615905
+    m_CategoryList:
+    - m_Name: base skin
+      m_Hash: -275197456
+      m_Sprite: {fileID: 3516794501818578996, guid: db1c164a9d6366042bc13ef614108ca6, type: 3}
+  - m_Name: Forearm R
+    m_Hash: 1410267452
+    m_CategoryList:
+    - m_Name: base skin
+      m_Hash: -275197456
+      m_Sprite: {fileID: 738782036875667821, guid: db1c164a9d6366042bc13ef614108ca6, type: 3}
+  - m_Name: Head
+    m_Hash: 130111906
+    m_CategoryList:
+    - m_Name: base skin
+      m_Hash: -275197456
+      m_Sprite: {fileID: -5873211986642899587, guid: db1c164a9d6366042bc13ef614108ca6, type: 3}
+  - m_Name: Hip
+    m_Hash: 1710400696
+    m_CategoryList:
+    - m_Name: base skin
+      m_Hash: -275197456
+      m_Sprite: {fileID: -2040904599522511361, guid: db1c164a9d6366042bc13ef614108ca6, type: 3}
+  - m_Name: Shin L
+    m_Hash: 2081657036
+    m_CategoryList:
+    - m_Name: base skin
+      m_Hash: -275197456
+      m_Sprite: {fileID: 2720794005178332620, guid: db1c164a9d6366042bc13ef614108ca6, type: 3}
+  - m_Name: Shin R
+    m_Hash: -2044940881
+    m_CategoryList:
+    - m_Name: base skin
+      m_Hash: -275197456
+      m_Sprite: {fileID: -6705581463025092017, guid: db1c164a9d6366042bc13ef614108ca6, type: 3}
+  - m_Name: Shoulder L
+    m_Hash: 1131329440
+    m_CategoryList:
+    - m_Name: base skin
+      m_Hash: -275197456
+      m_Sprite: {fileID: -7234878719030720163, guid: db1c164a9d6366042bc13ef614108ca6, type: 3}
+  - m_Name: Shoulder R
+    m_Hash: -1184789821
+    m_CategoryList:
+    - m_Name: base skin
+      m_Hash: -275197456
+      m_Sprite: {fileID: 874642062807506109, guid: db1c164a9d6366042bc13ef614108ca6, type: 3}
+  - m_Name: Thigh L
+    m_Hash: 816379626
+    m_CategoryList:
+    - m_Name: base skin
+      m_Hash: -275197456
+      m_Sprite: {fileID: -7104217590192988168, guid: db1c164a9d6366042bc13ef614108ca6, type: 3}
+  - m_Name: Thigh R
+    m_Hash: -894973047
+    m_CategoryList:
+    - m_Name: base skin
+      m_Hash: -275197456
+      m_Sprite: {fileID: 5057083948245042038, guid: db1c164a9d6366042bc13ef614108ca6, type: 3}
+  - m_Name: Upper Body
+    m_Hash: -465572829
+    m_CategoryList:
+    - m_Name: base skin
+      m_Hash: -275197456
+      m_Sprite: {fileID: 8800769560476592964, guid: db1c164a9d6366042bc13ef614108ca6, type: 3}
+  - m_Name: Eyes
+    m_Hash: 120101800
+    m_CategoryList:
+    - m_Name: none
+      m_Hash: 2140143823
+      m_Sprite: {fileID: 7924006347402074475, guid: 79301d785e12e034393adab5fb7976c2, type: 3}
+  - m_Name: Makeup
+    m_Hash: 102785962
+    m_CategoryList:
+    - m_Name: none
+      m_Hash: 2140143823
+      m_Sprite: {fileID: -999528429222722052, guid: 79301d785e12e034393adab5fb7976c2, type: 3}
+  - m_Name: Brow
+    m_Hash: 1797808227
+    m_CategoryList:
+    - m_Name: none
+      m_Hash: 2140143823
+      m_Sprite: {fileID: -5760428777235831910, guid: 79301d785e12e034393adab5fb7976c2, type: 3}
+  - m_Name: Mouth
+    m_Hash: 1594127251
+    m_CategoryList:
+    - m_Name: none
+      m_Hash: 2140143823
+      m_Sprite: {fileID: 8967307743609019835, guid: 79301d785e12e034393adab5fb7976c2, type: 3}
+  m_ModificationHash: 637962510386273505

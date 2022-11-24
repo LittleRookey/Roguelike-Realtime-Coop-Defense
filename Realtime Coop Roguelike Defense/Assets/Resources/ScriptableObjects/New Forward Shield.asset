@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22bc8aa06dc19bc4f9d2adc20e0ed3f4, type: 3}
+  m_Name: New Forward Shield
+  m_EditorClassIdentifier: 
+  showLog: 0
+  isPlayer: 1
+  name: Forward Shield
+  coolDownTime: 1
+  activeTime: 10
+  description: 
+  abilityType: 0
+  key: 102
+  Instantaneous: 1
+  cantMoveWhileAbilityIsActive: 0
+  cantMoveWhileChanting: 1
+  isEnded: 0
+  useChant: 1
+  chant: {fileID: 11400000, guid: e948e53a9433b9845857b662e8e4270c, type: 2}
+  chantDone: 1
+  spawningObject: {fileID: 6153922180478320278, guid: 98445bcada979b74abf46466efde02ad, type: 3}
+  objectSpawnOffsetPos: {x: 0, y: -0.8, z: 0}
+  objectSize: {x: 1, y: 1}
+  healthBarOffset: {x: 0, y: 3}
+  _shieldAmount: 100

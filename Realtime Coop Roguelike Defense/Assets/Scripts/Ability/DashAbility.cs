@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Threading.Tasks;
 
 [CreateAssetMenu(menuName ="Litkey/Ability/Dash")]
 public class DashAbility : Ability
@@ -9,12 +10,14 @@ public class DashAbility : Ability
     [SerializeField] private float dashForce;
     private Vector2 normalSpeed;
     Rigidbody2D rb;
-    [Range(0f, 1f)]
-    [SerializeField] private float t;
+    
+    [SerializeField] private float speed;
 
-    public override void OnAbilityStart(GameObject parent)
+    public override async void OnAbilityStart(GameObject parent)
     {
         base.OnAbilityStart(parent);
+        chantDone = await OnChantStart(parent);
+
         Vector3 dirVec = parent.GetComponent<PlayerMovement>().DirectionVec;
         rb = parent.GetComponent<Rigidbody2D>();
         normalSpeed = rb.velocity;
@@ -24,7 +27,8 @@ public class DashAbility : Ability
     public override void OnAbilityRunning(GameObject parent)
     {
         base.OnAbilityRunning(parent);
-        rb.velocity = Vector2.Lerp(rb.velocity, Vector2.zero, t);
+        //float k = 1.0f - Mathf.Pow(t, Time.deltaTime);
+        rb.velocity = Vector2.Lerp(rb.velocity, Vector2.zero, 1f - Mathf.Pow(speed, Time.deltaTime));
     }
 
     public override void OnAbilityEnd(GameObject parent)

@@ -13,12 +13,19 @@ MonoBehaviour:
   m_Name: Dash
   m_EditorClassIdentifier: 
   showLog: 1
+  isPlayer: 1
   name: Dash
   coolDownTime: 1
-  activeTime: 1
+  activeTime: 0.2
   description: Dashes toward the direction player is moving
   abilityType: 0
   key: 304
-  cantMoveWhileUsingAbility: 0
-  dashForce: 75
-  t: 0.082
+  Instantaneous: 1
+  cantMoveWhileAbilityIsActive: 0
+  cantMoveWhileChanting: 0
+  isEnded: 0
+  useChant: 0
+  chant: {fileID: 11400000, guid: 78997339e1923234da14ae2828bb4265, type: 2}
+  chantDone: 0
+  dashForce: 10
+  speed: 0.3

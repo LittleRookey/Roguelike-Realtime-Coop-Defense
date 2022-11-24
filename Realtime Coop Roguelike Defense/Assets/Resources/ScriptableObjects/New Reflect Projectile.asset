@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e293d82e7bae71848ba376ad29c59184, type: 3}
+  m_Name: New Reflect Projectile
+  m_EditorClassIdentifier: 
+  showLog: 0
+  isPlayer: 1
+  name: Reflection
+  coolDownTime: 1
+  activeTime: 0.3
+  description: Reflects all the projectile type
+  abilityType: 0
+  key: 101
+  Instantaneous: 1
+  cantMoveWhileUsingAbility: 0
+  isEnded: 0
+  useChant: 0
+  chant: {fileID: 0}
+  spawningObject: {fileID: 2745431163858999514, guid: e0de025f96298394cb697359e3e4ba1d, type: 3}
+  objectSpawnOffsetPos: {x: 2, y: 0, z: 0}
+  objectSize: {x: 0.5, y: 2}
