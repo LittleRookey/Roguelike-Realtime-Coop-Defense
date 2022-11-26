@@ -84,7 +84,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &8773017122589767000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,8 +181,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uB098\uC758 \uC774\uB984\uC73C\uB85C\n\uC8FC\uBB38\uC744 \uD5C8\uB77D\uD55C\uB2E4"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 438fb71a61fe17941b39921c953dead6, type: 2}
-  m_sharedMaterial: {fileID: 7565039661723751333, guid: 438fb71a61fe17941b39921c953dead6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6f346d894589a82498cf95fca115b735, type: 2}
+  m_sharedMaterial: {fileID: -3869248923427058809, guid: 6f346d894589a82498cf95fca115b735, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -242,7 +242,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0.8993335, y: 0, z: -3.75913, w: 0}
+  m_margin: {x: 0.007586479, y: 0, z: -5.4027433, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

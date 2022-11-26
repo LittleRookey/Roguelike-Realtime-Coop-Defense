@@ -1,6 +1,24 @@
+using UnityEngine.Events;
+using UnityEngine;
+using DG.Tweening;
 
 namespace Litkey.Utility
 {
+    public static class Effects
+    {
+        public static void ScaleUpMagicCircle(GameObject go, float finalScale, float duration)
+        {
+            go.gameObject.SetActive(true);
+            go.transform.localScale = Vector3.zero;
+            float scale = 0f;
+            DOTween.To(() => scale, x => scale = x, finalScale, duration)
+                .OnUpdate(() => {
+                    go.transform.localScale = Vector3.one * scale;
+                })
+                .OnComplete(() => go.gameObject.SetActive(false));
+        }
+    }
+
     public static class ProbabilityCheck
     {
         /*

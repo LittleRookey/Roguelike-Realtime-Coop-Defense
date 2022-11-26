@@ -13,12 +13,14 @@ MonoBehaviour:
   m_Name: ShieldChant
   m_EditorClassIdentifier: 
   chantTextObject: {fileID: 8773017122589767001, guid: caf2a2f23d244604da8d252cfe5182b3, type: 3}
-  chantOffset: {x: -0.01, y: 1.46}
-  chantSentence: "\uC2E4\uB4DC, \uC2E4\uB4DC, \uC2E4\uB4DC, \uC2E4\uB4DC\n\uC6B0\uC655\uC2E4\uB4DC\n\uB450\uBC88\uC9F8
-    \uC2E4\uB4DC\n\uC138\uBC88\uC9F8, \uC2E4\uB4DC"
+  chantOffset: {x: -2.03, y: 3.47}
+  chantSentence: "[\uC9C4\uC2E4\uC758 \uB9D0\uC774\uC5EC]\n[\uBE5B\uC774 \uB418\uC5B4
+    \uAC70\uC9D3\uC758 \uB9D0\uC744 \uBE44\uCDB0\uC11C \uAC77\uC5B4\uB0B4\uAC70\uB77C]\n[\uC2E4\uB4DC]"
   readMode: 0
   textColor: {r: 1, g: 1, b: 1, a: 1}
   readSpeed: 0.1
   commaWaitTime: 0.5
   newLineWaitTime: 1
-  delayEndChantTime: 1
+  <delayEndChantTime>k__BackingField: 1
+  lightVFX: {fileID: 687174771274251375, guid: e56bc2ca2b0d29546b73a9e08a65d2ae, type: 3}
+  lightOffset: {x: 0.6, y: 1.46, z: 0}

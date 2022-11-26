@@ -26,7 +26,10 @@ MonoBehaviour:
   isEnded: 0
   useChant: 1
   chant: {fileID: 11400000, guid: e948e53a9433b9845857b662e8e4270c, type: 2}
+  onAbilityStartVFX: {fileID: 510618529612140331, guid: 1f9fce2c4aa3b1c45bbc6ec6a46af28f, type: 3}
+  onAbilityStartVFXOffset: {x: 0, y: 0, z: 0}
   chantDone: 1
+  runChantEnd: 1
   spawningObject: {fileID: 6153922180478320278, guid: 98445bcada979b74abf46466efde02ad, type: 3}
   objectSpawnOffsetPos: {x: 0, y: -0.8, z: 0}
   objectSize: {x: 1, y: 1}

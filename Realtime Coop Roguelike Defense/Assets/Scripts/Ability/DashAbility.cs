@@ -13,6 +13,7 @@ public class DashAbility : Ability
     
     [SerializeField] private float speed;
 
+    
     public override async void OnAbilityStart(GameObject parent)
     {
         base.OnAbilityStart(parent);

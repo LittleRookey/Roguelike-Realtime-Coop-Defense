@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using System.Threading.Tasks;
-
+using DG.Tweening;
+using Litkey.Utility;
 public enum eAbilityType
 {
     Dash
@@ -34,8 +35,13 @@ public class Ability : ScriptableObject
     [Header("Chant setting")]
     public bool useChant;
     [SerializeField] public Chant chant;
-    [HideInInspector] public bool chantDone;
+    [SerializeField] protected GameObject onAbilityStartVFX;
+    [SerializeField] protected Vector3 onAbilityStartVFXOffset;
 
+    protected GameObject onAbilityStartVFXCopy;
+
+    [HideInInspector] public bool chantDone;
+    [HideInInspector] public bool runChantEnd;
 
     bool UnlockMovement = false;
 
@@ -63,26 +69,74 @@ public class Ability : ScriptableObject
         chantDone = false;
         isUsingAbility = true;
         isEnded = false;
+        
         if (cantMoveWhileAbilityIsActive || cantMoveWhileChanting)
         {
             PlayerMovement pm = parent.GetComponent<PlayerMovement>();
+            
             // run animation to skill state
-            pm.SetIdle();
+            //pm.SetIdle();
+            //pm.anim.SetBool("isRunning", false);
             pm.canMove = false;
 
             UnlockMovement = false;
         }
+
         
+
     }
 
+    // must call this in child class
     public virtual async Task<bool> OnChantStart(GameObject parent)
     {
         if (!useChant) return false;
+
+        runChantEnd = false;
         chant.CreateChant(parent);
+        parent.TryGetComponent<PlayerAnimatorController>(out PlayerAnimatorController playerAnimController);
+        if (playerAnimController != null)
+        {
+            playerAnimController.LookUp(true);
+        }
+
+        // spawns ability start vfx, magic circle
+        if (onAbilityStartVFXCopy == null && onAbilityStartVFX != null)
+        {
+            onAbilityStartVFXCopy = Instantiate(onAbilityStartVFX, parent.transform.position + (Vector3)onAbilityStartVFXOffset, onAbilityStartVFX.transform.rotation, parent.transform);
+
+        }
+
+        Debug.Log(chant.CalculateChantTimeInSec());
+
+        Effects.ScaleUpMagicCircle(onAbilityStartVFXCopy, 0.5f, chant.CalculateChantTimeInSec()+1f);
+        //TurnOnAbilityStartVFX((abilityStartVFX) =>
+        //{
+        //    abilityStartVFX.transform.localScale = Vector3.zero;
+        //    float scale = 0f;
+        //    DOTween.To(() => scale, x => scale = x, 0.5f, chant.CalculateChantTimeInSec())
+        //        .OnUpdate(() =>
+        //        {
+        //            abilityStartVFX.transform.localScale = Vector3.one * scale;
+        //        })
+        //        .OnComplete(() => abilityStartVFX.gameObject.SetActive(false));
+        //});
+
         await chant.ReadChant();
         return true;
     }
 
+    public virtual void OnChantEnd(GameObject parent)
+    {
+        runChantEnd = true;
+        parent.TryGetComponent<PlayerAnimatorController>(out PlayerAnimatorController playerAnimController);
+        if (playerAnimController != null)
+        {
+            playerAnimController.LookUp(false);
+        }
+
+        
+
+    }
 
     /// <summary>
     /// callback event ran when player is holding a key
