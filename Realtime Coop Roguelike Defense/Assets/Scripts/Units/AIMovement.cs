@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
-public class AIMovement : MonoBehaviour
+
+public class AIMovement : NetworkBehaviour
 {
     public bool isPlayer;
     [SerializeField] protected float _moveSpeed; // AI moving speed
