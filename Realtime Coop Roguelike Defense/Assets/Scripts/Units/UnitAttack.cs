@@ -23,6 +23,7 @@ public class UnitAttack : MonoBehaviour
     [SerializeField] private GameObject body;
 
     [SerializeField] private GameObject _target;
+    public bool stopAttacking;
 
     private float currentAttackSpeedTimer = 0f;
 
@@ -34,6 +35,7 @@ public class UnitAttack : MonoBehaviour
     void Update()
     {
         currentAttackSpeedTimer -= Time.deltaTime;
+        if (stopAttacking) return;
          if (currentAttackSpeedTimer <= 0 && _target != null)
         {
             // attack here
@@ -47,6 +49,7 @@ public class UnitAttack : MonoBehaviour
         var dirToEnemy = (_target.transform.position - (transform.position + lookDir)).normalized;
         if (shootStraight)
             dirToEnemy = lookDir;
+        OnAttack?.Invoke(gameObject);
         var proj = Instantiate(projectile, transform.position + lookDir, Quaternion.identity);
         proj.transform.rotation = UtilClass.GetRotationFromDirection(dirToEnemy);
         proj.GetComponent<Projectile>().Setup(dirToEnemy, projectileSpeed, enemyTag, _attackDamage);

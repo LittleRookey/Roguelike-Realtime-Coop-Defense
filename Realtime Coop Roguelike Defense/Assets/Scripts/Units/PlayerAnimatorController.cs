@@ -7,10 +7,11 @@ public class PlayerAnimatorController : MonoBehaviour
     [SerializeField] public Animator anim;
     [Header("References")]
     [SerializeField] private PlayerMovement playerMovement;
-
+    [SerializeField] private UnitAttack playerAttack;
     Vector3 movementVector;
 
     private readonly int isRun = Animator.StringToHash("isRun");
+    private readonly int attack = Animator.StringToHash("attack");
     private readonly int isLookUp = Animator.StringToHash("isLookUp");
 
     private void Awake()
@@ -19,12 +20,23 @@ public class PlayerAnimatorController : MonoBehaviour
             anim = GetComponentInChildren<Animator>();
         if (playerMovement == null)
             playerMovement = GetComponent<PlayerMovement>();
-
+        if (playerAttack == null)
+            playerAttack = GetComponent<UnitAttack>();
     }
-    // Start is called before the first frame update
-    void Start()
+
+    private void OnEnable()
     {
-        
+        playerAttack.OnAttack += RunAttackAnim;
+    }
+
+    private void OnDisable()
+    {
+        playerAttack.OnAttack -= RunAttackAnim;
+    }
+
+    private void RunAttackAnim(GameObject go)
+    {
+        anim.SetTrigger(attack);
     }
 
     // Update is called once per frame

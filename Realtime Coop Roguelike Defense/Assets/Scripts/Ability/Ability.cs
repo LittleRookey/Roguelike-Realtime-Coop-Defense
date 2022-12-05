@@ -92,7 +92,19 @@ public class Ability : ScriptableObject
         if (!useChant) return false;
 
         runChantEnd = false;
+
+        // initializes chant object
         chant.CreateChant(parent);
+
+        // stops attack if chant.stopattacking is true
+        parent.TryGetComponent<UnitAttack>(out UnitAttack unitAttack);
+        if (unitAttack != null)
+        {
+            if (chant.notAttackWhileChanting)
+                unitAttack.stopAttacking = true;
+        }
+
+        // makes character look up animation
         parent.TryGetComponent<PlayerAnimatorController>(out PlayerAnimatorController playerAnimController);
         if (playerAnimController != null)
         {
@@ -106,9 +118,10 @@ public class Ability : ScriptableObject
 
         }
 
-        Debug.Log(chant.CalculateChantTimeInSec());
+        // if ability start vfx exists, run effect
+        if (onAbilityStartVFXCopy != null)
+            Effects.ScaleUpMagicCircle(onAbilityStartVFXCopy, 0.5f, chant.CalculateChantTimeInSec()+1f);
 
-        Effects.ScaleUpMagicCircle(onAbilityStartVFXCopy, 0.5f, chant.CalculateChantTimeInSec()+1f);
         //TurnOnAbilityStartVFX((abilityStartVFX) =>
         //{
         //    abilityStartVFX.transform.localScale = Vector3.zero;
@@ -134,7 +147,13 @@ public class Ability : ScriptableObject
             playerAnimController.LookUp(false);
         }
 
-        
+        parent.TryGetComponent<UnitAttack>(out UnitAttack unitAttack);
+        if (unitAttack != null)
+        {
+            if (chant.notAttackWhileChanting)
+                unitAttack.stopAttacking = false;
+        }
+
 
     }
 

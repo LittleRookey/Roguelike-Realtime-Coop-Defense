@@ -16,6 +16,8 @@ public enum ReadMode
 [CreateAssetMenu(menuName ="Litkey/Chant")]
 public class Chant : ScriptableObject
 {
+    [Header("Chant Settings")]
+    public bool notAttackWhileChanting;
     [SerializeField] private GameObject chantTextObject;
     [SerializeField] private Vector2 chantOffset = new Vector2(-0.01f, 4.5f);
 
@@ -31,7 +33,18 @@ public class Chant : ScriptableObject
     
     [SerializeField] private Light2D lightVFX;
     [SerializeField] private Vector3 lightOffset;
+    public float TotalChantTime 
+    {
+        get => totalChantTime;
+        private set 
+        {
+            float totalTime = CalculateChantTimeInSec();
+            if (totalTime != totalChantTime)
+                totalChantTime = totalTime; 
+        } 
+    }
 
+    [SerializeField] private float totalChantTime;
     private Light2D lightCopy;
 
     public string ChantSentence => chantSentence;
@@ -46,6 +59,14 @@ public class Chant : ScriptableObject
     string[] commaSeparated;
 
     public UnityAction OnChantEnd;
+
+#if UNITY_EDITOR
+    private void OnValidate()
+    {
+        newLineSeparated = chantSentence.Split('\n');
+        TotalChantTime = CalculateChantTimeInSec();
+    }
+#endif
 
     private void OnEnable()
     {
@@ -181,7 +202,6 @@ public class Chant : ScriptableObject
         }
 
         // On Chant End
-        Debug.Log("LIGHTS OFFFFFFFFFFFFFFFFF");
         DOTween.To(() => lightCopy.intensity, x => lightCopy.intensity = x, 0f, .5f)
             .OnComplete(() => {
                 lightCopy.gameObject.SetActive(false);
