@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28ef5c3121a3e2645908f3b891113dd0, type: 3}
   m_Name: ShieldChant
   m_EditorClassIdentifier: 
+  notAttackWhileChanting: 1
   chantTextObject: {fileID: 8773017122589767001, guid: caf2a2f23d244604da8d252cfe5182b3, type: 3}
   chantOffset: {x: -2.03, y: 3.47}
   chantSentence: "\u300E\uC9C4\uC2E4\uC758 \uB9D0\uC774\uC5EC\u300F\n\u300E\uBE5B\uC774
-    \uB418\uC5B4 \uAC70\uC9D3\uC758 \uB9D0\uC744 \uBE44\uCDB0\uC11C \uAC77\uC5B4\uB0B4\uAC70\uB77C\u300F\n\u3010\uC2E4\uB4DC\u3011\uAC00\uB098\uB2E4\uB77C
-    \n\uB9C8\uBC14\uC0AC\n"
+    \uB418\uC5B4 \uAC70\uC9D3\uC758 \uB9D0\uC744 \uBE44\uCDB0\uC11C \uAC77\uC5B4\uB0B4\uAC70\uB77C\u300F\n\u3010\uC2E4\uB4DC\u3011"
   readMode: 0
   textColor: {r: 1, g: 1, b: 1, a: 1}
   readSpeed: 0.1

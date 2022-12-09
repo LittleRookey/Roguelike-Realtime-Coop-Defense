@@ -21,7 +21,7 @@ public class NetworkPlayer : NetworkBehaviour
     public GameObject SpawnPlayer()
     {
         GameObject[] spawnPoints = GameObject.FindGameObjectsWithTag("SpawnPoint");
-
+        Debug.Log(spawnPoints.Length);
         GameObject go = Instantiate(playerPrefab,
             spawnPoints[Random.Range(0, spawnPoints.Length - 1)].transform.position, Quaternion.identity);
         go.GetComponent<NetworkObject>().SpawnWithOwnership(OwnerClientId);

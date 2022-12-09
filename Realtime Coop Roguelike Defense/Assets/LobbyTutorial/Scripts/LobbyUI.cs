@@ -116,6 +116,11 @@ public class LobbyUI : MonoBehaviour {
     }
 
     private void ClearLobby() {
+        if (container == null)
+        {
+            Debug.Log("Error: no container");
+            return;
+        }
         foreach (Transform child in container) {
             if (child == playerSingleTemplate) continue;
             Destroy(child.gameObject);
