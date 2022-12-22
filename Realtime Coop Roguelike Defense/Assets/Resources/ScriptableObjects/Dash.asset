@@ -15,7 +15,7 @@ MonoBehaviour:
   showLog: 1
   isPlayer: 1
   name: Dash
-  coolDownTime: 1
+  coolDownTime: 5
   activeTime: 0.2
   description: Dashes toward the direction player is moving
   abilityType: 0
@@ -26,6 +26,9 @@ MonoBehaviour:
   isEnded: 0
   useChant: 0
   chant: {fileID: 11400000, guid: 78997339e1923234da14ae2828bb4265, type: 2}
+  onAbilityStartVFX: {fileID: 0}
+  onAbilityStartVFXOffset: {x: 0, y: 0, z: 0}
   chantDone: 0
+  runChantEnd: 0
   dashForce: 10
   speed: 0.3

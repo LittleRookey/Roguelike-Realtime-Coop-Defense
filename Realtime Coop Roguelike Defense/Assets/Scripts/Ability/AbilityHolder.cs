@@ -18,6 +18,9 @@ public class AbilityHolder : MonoBehaviour
 
     bool isActive = false; // is ability active?
 
+    bool useAbilityButton = false; // on skill use with buttons
+
+
     enum AbilityState
     {
         ready, // when ability gets ready, no cooldown
@@ -30,11 +33,14 @@ public class AbilityHolder : MonoBehaviour
     public UnityAction<GameObject> OnAbilityRunning; // event that runs while abiilty is active, runs once if it is immediate ability
     public UnityAction<GameObject> OnAbilityEnd; // event that runs on Ability Start
 
+    public UnityAction<GameObject> OnChantEnd;
+
     public void OnEnable()
     {
         OnAbilityStart += ability.OnAbilityStart;
         OnAbilityRunning += ability.OnAbilityRunning;
         OnAbilityEnd += ability.OnAbilityEnd;
+        OnChantEnd += ability.OnChantEnd;
     }
 
     private void OnDisable()
@@ -42,6 +48,7 @@ public class AbilityHolder : MonoBehaviour
         OnAbilityStart -= ability.OnAbilityStart;
         OnAbilityRunning -= ability.OnAbilityRunning;
         OnAbilityEnd -= ability.OnAbilityEnd;
+        OnChantEnd -= ability.OnChantEnd;
     }
 
     void Update()
@@ -67,7 +74,17 @@ public class AbilityHolder : MonoBehaviour
                 break;
             case AbilityState.active:
                 if (ability.useChant)
+                {
                     if (!ability.chantDone) return;
+                    else
+                    {
+                        if (!ability.runChantEnd)
+                        {
+                            OnChantEnd?.Invoke(gameObject);
+                        }
+                    }
+
+                }
                 if (activeTime > 0)
                 {
                     activeTime -= Time.deltaTime;
@@ -101,6 +118,8 @@ public class AbilityHolder : MonoBehaviour
     // Ability for when button is pressed, use ability
     public void UseAbility()
     {
+        if (state != AbilityState.ready) return;
+
         if (!isActive)
         {
             OnAbilityStart?.Invoke(gameObject);

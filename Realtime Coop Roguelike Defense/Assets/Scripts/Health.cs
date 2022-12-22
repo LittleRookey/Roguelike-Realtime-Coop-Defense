@@ -16,7 +16,8 @@ public class Health : MonoBehaviour
 
     public UnityAction OnSpawn;
     public UnityAction<float> OnHit;
-    public UnityAction OnDeath;
+    public UnityAction<GameObject> OnDeath;
+    Enemy enemy;
 
     private void Awake()
     {
@@ -38,15 +39,26 @@ public class Health : MonoBehaviour
         {
             _currentHealth = 0f;
             OnHit?.Invoke(_currentHealth / _maxHealth);
-            OnDeath?.Invoke();
+            
+            OnDeath?.Invoke(this.gameObject);
+
             if (destroyOnDeath) Destroy(gameObject);
         }
     }
 
     public void SetHealth(float healthAmount)
     {
-        this._maxHealth = healthAmount;
-        this._currentHealth = _maxHealth;
+        if (healthAmount > _maxHealth)
+            healthAmount = _maxHealth;
+
+        this._currentHealth = healthAmount;
+        OnHit?.Invoke(this._currentHealth / this._maxHealth);
+    }
+
+    public void SetMaxHealth()
+    {
+        this._currentHealth = this._maxHealth;
+        OnHit?.Invoke(this._currentHealth / this._maxHealth);
     }
 
     public void SetScript(float healthAmount, bool destroyOnZero, bool hasHealthBar)

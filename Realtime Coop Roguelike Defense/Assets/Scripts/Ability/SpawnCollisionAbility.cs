@@ -56,6 +56,7 @@ public class SpawnCollisionAbility : Ability
     public override void OnAbilityEnd(GameObject parent)
     {
         base.OnAbilityEnd(parent);
+        if (spawnedObject == null) return; // TODO remove it when the object is being spawned using object pool
         spawnedObject.gameObject.SetActive(false);
         collisionHandler.OnTriggerEntered -= OnTriggerEnteredFunc;
         Debug.Log("Called from spawn collision ability end");

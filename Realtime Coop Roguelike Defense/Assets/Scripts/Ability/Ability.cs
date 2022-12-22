@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using System.Threading.Tasks;
-
+using DG.Tweening;
+using Litkey.Utility;
 public enum eAbilityType
 {
     Dash
@@ -14,7 +15,7 @@ public class Ability : ScriptableObject
 {
     [Header("Debug")]
     public bool showLog;
-    
+
     [Header("Main Ability Settings")]
     public bool isPlayer; // is player's ability
     public new string name; // ability name
@@ -34,12 +35,17 @@ public class Ability : ScriptableObject
     [Header("Chant setting")]
     public bool useChant;
     [SerializeField] public Chant chant;
-    [HideInInspector] public bool chantDone;
+    [SerializeField] protected GameObject onAbilityStartVFX;
+    [SerializeField] protected Vector3 onAbilityStartVFXOffset;
 
+    protected GameObject onAbilityStartVFXCopy;
+
+    [HideInInspector] public bool chantDone;
+    [HideInInspector] public bool runChantEnd;
 
     bool UnlockMovement = false;
 
-    public Ability Clone() 
+    public Ability Clone()
     {
         Ability ab = new Ability();
         ab.name = name;
@@ -54,7 +60,7 @@ public class Ability : ScriptableObject
     /// callback event ran when ability starts
     /// </summary>
     /// /// <param name="parent">the gameObject Ability Holder is attached to</param>
-    public virtual void OnAbilityStart(GameObject parent) 
+    public virtual void OnAbilityStart(GameObject parent)
     {
         if (showLog)
         {
@@ -63,26 +69,91 @@ public class Ability : ScriptableObject
         chantDone = false;
         isUsingAbility = true;
         isEnded = false;
+
         if (cantMoveWhileAbilityIsActive || cantMoveWhileChanting)
         {
             PlayerMovement pm = parent.GetComponent<PlayerMovement>();
+
             // run animation to skill state
-            pm.SetIdle();
+            //pm.SetIdle();
+            //pm.anim.SetBool("isRunning", false);
             pm.canMove = false;
 
             UnlockMovement = false;
         }
-        
+
+
+
     }
 
+    // must call this in child class
     public virtual async Task<bool> OnChantStart(GameObject parent)
     {
         if (!useChant) return false;
+
+        runChantEnd = false;
+
+        // initializes chant object
         chant.CreateChant(parent);
+
+        // stops attack if chant.stopattacking is true
+        parent.TryGetComponent<UnitAttack>(out UnitAttack unitAttack);
+        if (unitAttack != null)
+        {
+            if (chant.notAttackWhileChanting)
+                unitAttack.stopAttacking = true;
+        }
+
+        // makes character look up animation
+        parent.TryGetComponent<PlayerAnimatorController>(out PlayerAnimatorController playerAnimController);
+        if (playerAnimController != null)
+        {
+            playerAnimController.LookUp(true);
+        }
+
+        // spawns ability start vfx, magic circle
+        if (onAbilityStartVFXCopy == null && onAbilityStartVFX != null)
+        {
+            onAbilityStartVFXCopy = Instantiate(onAbilityStartVFX, parent.transform.position + (Vector3)onAbilityStartVFXOffset, onAbilityStartVFX.transform.rotation, parent.transform);
+
+        }
+
+        // if ability start vfx exists, run effect
+        if (onAbilityStartVFXCopy != null)
+            Effects.ScaleUpMagicCircle(onAbilityStartVFXCopy, 0.5f, chant.CalculateChantTimeInSec() + 1f);
+
+        //TurnOnAbilityStartVFX((abilityStartVFX) =>
+        //{
+        //    abilityStartVFX.transform.localScale = Vector3.zero;
+        //    float scale = 0f;
+        //    DOTween.To(() => scale, x => scale = x, 0.5f, chant.CalculateChantTimeInSec())
+        //        .OnUpdate(() =>
+        //        {
+        //            abilityStartVFX.transform.localScale = Vector3.one * scale;
+        //        })
+        //        .OnComplete(() => abilityStartVFX.gameObject.SetActive(false));
+        //});
+
         await chant.ReadChant();
         return true;
     }
 
+    public virtual void OnChantEnd(GameObject parent)
+    {
+        runChantEnd = true;
+        parent.TryGetComponent<PlayerAnimatorController>(out PlayerAnimatorController playerAnimController);
+        if (playerAnimController != null)
+        {
+            playerAnimController.LookUp(false);
+        }
+
+        parent.TryGetComponent<UnitAttack>(out UnitAttack unitAttack);
+        if (unitAttack != null)
+        {
+            if (chant.notAttackWhileChanting)
+                unitAttack.stopAttacking = false;
+        }
+    }
 
     /// <summary>
     /// callback event ran when player is holding a key
@@ -107,7 +178,7 @@ public class Ability : ScriptableObject
     /// callback event ran when ability ended
     /// </summary>
     /// /// <param name="parent">the gameObject Ability Holder is attached to</param>
-    public virtual void OnAbilityEnd(GameObject parent) 
+    public virtual void OnAbilityEnd(GameObject parent)
     {
         if (showLog)
         {
@@ -121,7 +192,7 @@ public class Ability : ScriptableObject
         isUsingAbility = false;
     }
 
-    
+
 
 
     protected bool IsOnCooldown()

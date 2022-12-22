@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
+
+
 public enum HealthSpawnPos
 {
     Up,
@@ -9,7 +12,8 @@ public enum HealthSpawnPos
 }
 public class HealthUI : MonoBehaviour
 {
-    public Image healthBar;
+    public Image healthBar; // actual red healthbar
+    public Image backHealthBar; // healthbar that moves white
     Health health;
     private HealthSpawnPos currentSpawnPos = HealthSpawnPos.Down;
 
@@ -35,7 +39,9 @@ public class HealthUI : MonoBehaviour
 
     public void UpdateHealth(float fillAmount)
     {
+        //Debug.Log("H");
         healthBar.fillAmount = fillAmount;
+        DOTween.To(() => backHealthBar.fillAmount, x => backHealthBar.fillAmount = x, fillAmount, .3f);
     }
 
     public void SetHealthBarPos(HealthSpawnPos hsp, Vector3 add)
