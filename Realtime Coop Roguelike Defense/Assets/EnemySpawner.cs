@@ -9,6 +9,7 @@ public class EnemySpawner : MonoBehaviour
     [Header("Pool Settings")]
     [SerializeField]
     private bool _resetAllPoolOnStart;
+    [SerializeField] private Transform enemyContainer;
 
     [Header("Spawner Settings")]
     [SerializeField] private bool waveStartWhenAllEnemiesDead = true;
@@ -55,6 +56,14 @@ public class EnemySpawner : MonoBehaviour
     private int waveIndex = 0;
 
     PoolManager poolManager;
+
+    private void OnValidate()
+    {
+        for (int i = 0; i <  enemyContainer.transform.childCount; i++)
+        {
+            Destroy(enemyContainer.GetChild(i).gameObject);
+        }
+    }
     private void Awake()
     {
         poolManager = GetComponent<PoolManager>();

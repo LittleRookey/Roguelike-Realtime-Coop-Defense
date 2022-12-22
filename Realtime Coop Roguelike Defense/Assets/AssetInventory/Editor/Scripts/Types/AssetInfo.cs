@@ -44,7 +44,6 @@ namespace AssetInventory
         public string DisplayPublisher { get; set; }
         public string SafeCategory { get; set; }
         public string DisplayCategory { get; set; }
-        public string PreviewImage { get; set; }
         public Asset.State CurrentState { get; set; }
         public Asset.SubState CurrentSubState { get; set; }
         public string Slug { get; set; }
@@ -70,6 +69,8 @@ namespace AssetInventory
         public string OfficialState { get; set; }
         public bool IsHidden { get; set; }
         public bool Exclude { get; set; }
+        public bool Backup { get; set; }
+        public bool KeepExtracted { get; set; }
         public string ETag { get; set; }
         public DateTime LastOnlineRefresh { get; set; }
         public int FileCount { get; set; }
@@ -78,8 +79,6 @@ namespace AssetInventory
         // runtime only
         public AssetDownloader PackageDownloader;
         public Texture2D PreviewTexture { get; set; }
-        public string ProjectPath { get; set; }
-        public bool InProject => !string.IsNullOrWhiteSpace(ProjectPath);
         public bool IsIndexed => AssetSource == Asset.Source.Directory || (FileCount > 0 && CurrentState == Asset.State.Done);
         public bool IsDeprecated => OfficialState == "deprecated";
         public bool IsAbandoned => OfficialState == "disabled";
@@ -282,9 +281,17 @@ namespace AssetInventory
             WasOutdated = false;
         }
 
+        public string GetPackagePreviewFile(string previewFolder, bool validate = true)
+        {
+            string file = System.IO.Path.Combine(previewFolder, AssetId.ToString(), $"a-{AssetId}.png");
+            if (validate && !File.Exists(file)) file = null;
+
+            return file;
+        }
+
         public override string ToString()
         {
-            return $"Asset Info '{GetDisplayName()}'";
+            return $"Asset Info '{FileName}' ({GetDisplayName()})'";
         }
     }
 }

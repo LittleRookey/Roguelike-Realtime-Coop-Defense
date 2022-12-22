@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace AssetInventory
 {
-    public sealed class UnityPackageImporter : AssertImporter
+    public sealed class UnityPackageImporter : AssetImporter
     {
         private const int BREAK_INTERVAL = 10;
 
@@ -80,6 +80,7 @@ namespace AssetInventory
                 {
                     size = new FileInfo(package).Length;
                     if (AssetInventory.Config.excludeByDefault) asset.Exclude = true;
+                    if (AssetInventory.Config.backupByDefault) asset.Backup = true;
                 }
 
                 // update progress only if really doing work to save refresh time in UI
@@ -139,6 +140,16 @@ namespace AssetInventory
 
                 await IndexPackage(assets[i], progressId);
                 await Task.Yield(); // let editor breath
+                if (CancellationRequested) break;
+
+                // reread asset from DB in case of intermittent changes by online refresh 
+                Asset asset = DBAdapter.DB.Find<Asset>(assets[i].Id);
+                if (asset == null)
+                {
+                    Debug.LogWarning($"{assets[i]} disappeared while indexing.");
+                    continue;
+                }
+                assets[i] = asset;
 
                 AssetHeader header = ReadHeader(assets[i].Location);
                 ApplyHeader(header, assets[i]);
@@ -156,6 +167,8 @@ namespace AssetInventory
 
             int subProgressId = MetaProgress.Start("Indexing package", null, progressId);
             string previewPath = AssetInventory.GetPreviewFolder();
+
+            await RemovePersistentCacheEntry(asset);
             string tempPath = await AssetInventory.ExtractAsset(asset);
             if (string.IsNullOrEmpty(tempPath))
             {
@@ -165,7 +178,9 @@ namespace AssetInventory
             string assetPreviewFile = Path.Combine(tempPath, ".icon.png");
             if (File.Exists(assetPreviewFile))
             {
-                string targetFile = Path.Combine(previewPath, "a-" + asset.Id + Path.GetExtension(assetPreviewFile));
+                string targetDir = Path.Combine(previewPath, asset.Id.ToString());
+                string targetFile = Path.Combine(targetDir, "a-" + asset.Id + Path.GetExtension(assetPreviewFile));
+                if (!Directory.Exists(targetDir)) Directory.CreateDirectory(targetDir);
                 File.Copy(assetPreviewFile, targetFile, true);
                 asset.PreviewImage = Path.GetFileName(targetFile);
             }
@@ -218,19 +233,18 @@ namespace AssetInventory
                 // update preview 
                 if (AssetInventory.Config.extractPreviews && File.Exists(previewFile))
                 {
-                    string targetFile = Path.Combine(previewPath, "af-" + af.Id + Path.GetExtension(previewFile));
+                    string targetFile = af.GetPreviewFile(previewPath);
+                    string targetDir = Path.GetDirectoryName(targetFile);
+                    if (!Directory.Exists(targetDir)) Directory.CreateDirectory(targetDir);
                     File.Copy(previewFile, targetFile, true);
-                    af.PreviewFile = Path.GetFileName(targetFile);
-                    af.DominantColor = null;
-                    af.DominantColorGroup = null;
+                    af.PreviewState = AssetFile.PreviewOptions.Supplied;
+                    af.Hue = -1;
                     Persist(af);
                 }
                 if (CancellationRequested) break;
                 await Cooldown.Do();
             }
-
-            // remove files again, no need to wait
-            Task _ = Task.Run(() => Directory.Delete(tempPath, true));
+            RemoveWorkFolder(asset, tempPath);
 
             CurrentSub = null;
             SubCount = 0;
@@ -240,6 +254,9 @@ namespace AssetInventory
 
         public static AssetHeader ReadHeader(string path)
         {
+            if (string.IsNullOrEmpty(path)) return null;
+            if (!File.Exists(path)) return null;
+
             AssetHeader result = null;
             using (FileStream stream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
             {

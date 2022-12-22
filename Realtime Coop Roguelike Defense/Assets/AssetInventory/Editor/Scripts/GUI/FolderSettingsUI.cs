@@ -47,6 +47,17 @@ namespace AssetInventory
                     EditorGUILayout.LabelField(UIStyles.Content("Create Previews", "Recommended. Will generate previews and additional metadata but requires more time during indexing."), EditorStyles.boldLabel, GUILayout.Width(width));
                     _spec.createPreviews = EditorGUILayout.Toggle(_spec.createPreviews);
                     GUILayout.EndHorizontal();
+
+                    GUILayout.BeginHorizontal();
+                    EditorGUILayout.LabelField(UIStyles.Content("Remove Orphans", "Recommended. Will check for deleted files and remove them from the index."), EditorStyles.boldLabel, GUILayout.Width(width));
+                    _spec.removeOrphans = EditorGUILayout.Toggle(_spec.removeOrphans);
+                    GUILayout.EndHorizontal();
+
+                    GUILayout.BeginHorizontal();
+                    EditorGUILayout.LabelField(UIStyles.Content("Assign Package", $"Will connect indexed files to a new package with the name of the folder. Otherwise list them under '{Asset.NONE}'."), EditorStyles.boldLabel, GUILayout.Width(width));
+                    _spec.attachToPackage = EditorGUILayout.Toggle(_spec.attachToPackage);
+                    GUILayout.EndHorizontal();
+
                     break;
 
                 case 2: // zip

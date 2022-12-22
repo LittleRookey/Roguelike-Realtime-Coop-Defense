@@ -1,3 +1,89 @@
+## 1.8.0 (2022-12-14)
+- Allow to create a new package for each media folder where indexed files are attached to instead of all being under -no attached package-
+- Media Folders have a setting now to remove orphaned files from the index that don't exist anymore in the directory!
+- Support materializing imported files from UnityPackages and archives into their original folder structure!
+- Settings for import destination and structure
+- Allow to keep original structure of individual assets during import
+- Support custom fixed target import folder
+- Special rule to materialize files without dependencies during drag and drop directly into target folder
+- Allow marking new packages for backup automatically
+- Consider ASSETSTORE_CACHE_PATH for default asset path if set
+- Improved and extended hard disk space usage overview
+- Show available updates for registry packages
+- Expose Hue field for export
+- Allow marking packages to be always extracted for faster access
+- Delete old cache entry for always extracted packages when encountering new version to index
+- Remove redundant preview information from database (size reduction + performance improvement of ~10%)
+- Maintenance function to remove orphaned preview images
+- Change "Open in Explorer" to "Open in Finder" on Mac
+- Backup excluded assets as well
+- Remove another unneeded preview field from the database
+- Consolidate more settings into the Settings panel
+- Continue indexing even if default asset cache could not be found
+- Support special case unity packages that are not zipped
+- Improve color importer to mark missing preview images correctly
+- Dramatically reduce set of files to go through in Color indexer if audio indexing is disabled
+- Handle packages correctly where seat has been revoked after initial indexing by switching them to custom packages until they reappear in the purchases
+- Fix package previews not showing in all cases
+- Fix metadata sometimes not getting updated during online refresh if package indexing is running in parallel
+- Fix warnings throw by compiler
+- Fix temporary extraction for archives not getting removed again after indexing
+- Fix folder size calculation error if Extracted folder does not exist
+
+## 1.7.0 (2022-11-15)
+- Support drag and drop from search to project browser!
+- Ability to recreate previews! (individually, per package, per database)
+- Custom UI to visualize dependencies, showing total size & grouping by file types
+- Dependency view now shows which assets are already in the project
+- Materialize dependencies when recreating previews (enables prefab and material preview generation)
+- Automatically remove missing scripts from prefabs for improved dependency calculation
+- Search view option to show only with or without available previews
+- New search mode: individual words do not need to appear in that order anymore, except if search starts with ~.
+- Search can be told that words must not appear in the result by prefixing a word with "-"
+- Export Data wizard
+- Ability to turn off auto-search
+- Structure preview images into sub-folders
+- Show upgrade wizard if needed when updating tool
+- Allow reimporting individual assets even if they are already in project
+- Improve color detection by switching to hue
+- Faster color indexing, reduced DB size
+- Match colors by custom range (advanced setting directly in config json)
+- Don't extract package for sound preview if file is already inside project
+- New shortcut to select same package from search view in package view
+- Auto-mark missing preview images to be redone and reset internal state
+- Backup only selected packages
+- New bulk action: enable/disable backups
+- Make auto-hiding view settings configurable
+- Format configuration JSON for easier editing
+- Treat DLLs as script dependencies
+- Improve dependency recursion detection
+- New maintenance view: marked for backup
+- Make reporting asynchronous, show progress and allow cancellation
+- Scroll back to top when changing search result pages
+- Configurable hard-limit when selecting to see -All- search results to keep Unity responsive in case of giant result sets
+- Work-around Unity issue that deleted assets are still reported as existing in project (fixes reimport & missing dependencies on second import)
+- Limit current search quickly to selected package
+- Add tip to documentation to use empty project for initial indexing
+- Add advanced configuration section to documentation
+- Skip audio files per default during color indexing
+- Remove warning in 2023.1
+- When sorting by color only return indexed items
+- Hide more dangerous maintenance functions initially
+- Don't fail indexing when there are extraction errors
+- Abort texture loading in asset tree when entering play-mode
+- Ensure preview images are reloaded when existing play-mode and tool is docked
+- Don't accidentally mark packages as done when cancelling indexing
+- Catch cases when local package list is not available
+- Fix potentially wrong package getting selected when going from Package view to Search view
+- Fix edge case of preview images sometimes not being created
+- Fix edge case of cache directory not being able to be deleted
+- Fix case of search returning no results if it was on a sub page before
+- Fix long lists of dependencies not being able to visualize
+- Fix Asset Store packages manually stored in different folders being marked as outdated
+- Fix files with multiple . not being able to be previewed
+- Fix import with dependencies failing when asset file ends with a space
+- Fix Ping not selecting asset correctly if project view was not visible before
+
 ## 1.6.0 (2022-11-02)
 - Support indexing zip archives!
 - Support determining dependencies of binary serialized files (but without scripts)!

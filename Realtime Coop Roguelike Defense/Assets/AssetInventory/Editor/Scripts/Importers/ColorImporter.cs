@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using SQLite;
 using UnityEngine;
 
 namespace AssetInventory
 {
-    public sealed class ColorImporter : AssertImporter
+    public sealed class ColorImporter : AssetImporter
     {
         public IEnumerator Index()
         {
@@ -14,9 +15,19 @@ namespace AssetInventory
 
             string previewFolder = AssetInventory.GetPreviewFolder();
 
-            List<AssetFile> files = DBAdapter.DB.Table<AssetFile>()
-                .Where(a => a.PreviewFile != null && a.DominantColor == null)
-                .ToList();
+            TableQuery<AssetFile> query = DBAdapter.DB.Table<AssetFile>()
+                .Where(a => (a.PreviewState == AssetFile.PreviewOptions.Custom || a.PreviewState == AssetFile.PreviewOptions.Supplied) && a.Hue < 0);
+
+            // skip audio files per default
+            if (!AssetInventory.Config.extractAudioColors)
+            {
+                foreach (string t in AssetInventory.TypeGroups["Audio"])
+                {
+                    query = query.Where(a => a.Type != t);
+                }
+            }
+
+            List<AssetFile> files = query.ToList();
 
             SubCount = files.Count;
             for (int i = 0; i < files.Count; i++)
@@ -26,23 +37,23 @@ namespace AssetInventory
 
                 AssetFile file = files[i];
                 MetaProgress.Report(progressId, i + 1, files.Count, file.FileName);
-
-                string previewFile = Path.Combine(previewFolder, file.PreviewFile);
-                if (!File.Exists(previewFile)) continue;
-
                 CurrentSub = $"Extracting colors from {file.FileName}";
                 SubProgress = i + 1;
+
+                string previewFile = file.GetPreviewFile(previewFolder);
+                if (!File.Exists(previewFile))
+                {
+                    Debug.LogWarning($"Preview file for {file} does not exist anymore. Marking it missing for recreation.");
+                    DBAdapter.DB.Execute("update AssetFile set PreviewState=? where Id=?", AssetFile.PreviewOptions.Redo, file.Id);
+                    file.PreviewState = AssetFile.PreviewOptions.None;
+                    continue;
+                }
 
                 yield return AssetUtils.LoadTexture(previewFile, result =>
                 {
                     if (result == null) return;
 
-                    Color mostUsedColor = ColorUtils.GetMostUsedColor(result);
-                    Color colorGroup = ColorUtils.GetNearestColor(mostUsedColor);
-
-                    file.DominantColor = "#" + ColorUtility.ToHtmlStringRGB(mostUsedColor);
-                    file.DominantColorGroup = "#" + ColorUtility.ToHtmlStringRGB(colorGroup);
-
+                    file.Hue = ColorUtils.GetHue(result);
                     Persist(file);
                 });
             }

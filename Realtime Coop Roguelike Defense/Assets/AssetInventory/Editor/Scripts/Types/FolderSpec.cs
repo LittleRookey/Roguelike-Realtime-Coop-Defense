@@ -11,6 +11,8 @@ namespace AssetInventory
         public string location;
         public string pattern;
         public bool createPreviews = true;
+        public bool removeOrphans = true;
+        public bool attachToPackage;
         public bool preferPackages = true;
     }
 }

@@ -33,6 +33,8 @@ public class AbilityHolder : MonoBehaviour
     public UnityAction<GameObject> OnAbilityRunning; // event that runs while abiilty is active, runs once if it is immediate ability
     public UnityAction<GameObject> OnAbilityEnd; // event that runs on Ability Start
 
+    public UnityAction<AbilityHolder> OnAbilityUsed; // event that runs when ability is used, used for disabling ability 
+
     public UnityAction<GameObject> OnChantEnd;
 
     public void OnEnable()
@@ -69,7 +71,7 @@ public class AbilityHolder : MonoBehaviour
                     state = AbilityState.active;
                     activeTime = ability.activeTime;
                     isActive = true;
-
+                    OnAbilityUsed?.Invoke(this);
                 }
                 break;
             case AbilityState.active:
@@ -119,6 +121,7 @@ public class AbilityHolder : MonoBehaviour
     public void UseAbility()
     {
         if (state != AbilityState.ready) return;
+        if (isLocked) return;
 
         if (!isActive)
         {
@@ -126,7 +129,7 @@ public class AbilityHolder : MonoBehaviour
             state = AbilityState.active;
             activeTime = ability.activeTime;
             isActive = true;
-
+            OnAbilityUsed?.Invoke(this);
         }
     }
 

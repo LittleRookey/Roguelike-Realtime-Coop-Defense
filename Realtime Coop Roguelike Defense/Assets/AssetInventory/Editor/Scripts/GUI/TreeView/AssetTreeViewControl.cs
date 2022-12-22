@@ -70,12 +70,15 @@ namespace AssetInventory
                     break;
 
                 case Columns.Version:
+                    bool updateAvailable = item.Data.IsUpdateAvailable((List<AssetInfo>) TreeModel.GetData());
+
                     Rect versionRect = cellRect;
                     versionRect.width -= 16;
+                    //GUIContent version = new GUIContent(item.Data.Version + (updateAvailable ? $" -> {item.Data.LatestVersion}" : ""));
                     GUIContent version = new GUIContent(item.Data.Version);
                     EditorGUI.LabelField(versionRect, version);
 
-                    if (item.Data.IsUpdateAvailable((List<AssetInfo>) TreeModel.GetData()))
+                    if (updateAvailable)
                     {
                         Vector2 size = EditorStyles.label.CalcSize(version);
                         Texture statusIcon = EditorGUIUtility.IconContent("Update-Available", "|Update Available").image;

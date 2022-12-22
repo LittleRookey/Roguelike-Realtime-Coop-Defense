@@ -20,6 +20,8 @@ namespace AssetInventory
         private const string URL_ASSET_DOWNLOAD = "https://packages-v2.unity.com/-/api/legacy-package-download-info";
         private const int PAGE_SIZE = 100; // more is not supported by Asset Store
 
+        public static ActionDone OnPackageListUpdated;
+
         private static ListRequest _listRequest;
         private static SearchRequest _searchRequest;
         private static List<PackageInfo> _allPackages;
@@ -53,13 +55,13 @@ namespace AssetInventory
                     if (CancellationRequested) break;
 
                     AssetPurchases pageResult = await AssetUtils.FetchAPIData<AssetPurchases>($"{URL_PURCHASES}?offset={i * PAGE_SIZE}&limit={PAGE_SIZE}", token);
-                    if (pageResult != null)
+                    if (pageResult?.results != null)
                     {
                         result.results.AddRange(pageResult.results);
                     }
                     else
                     {
-                        Debug.LogError("Could only retrieve a partial list of asset purchases. Try again later.");
+                        Debug.LogError("Could only retrieve a partial list of asset purchases. Most likely the Unity web API has a hick-up. Try again later.");
                     }
                 }
             }
@@ -80,10 +82,10 @@ namespace AssetInventory
             return result;
         }
 
-        public static async Task<DownloadInfo> RetrieveAssetDownloadInfo(int id)
+        public static async Task<DownloadInfo> RetrieveAssetDownloadInfo(int id, Action<long> responseIssueCodeCallback = null)
         {
             string token = CloudProjectSettings.accessToken;
-            DownloadInfoResult result = await AssetUtils.FetchAPIData<DownloadInfoResult>($"{URL_ASSET_DOWNLOAD}/{id}", token);
+            DownloadInfoResult result = await AssetUtils.FetchAPIData<DownloadInfoResult>($"{URL_ASSET_DOWNLOAD}/{id}", token, null, null, 1, responseIssueCodeCallback);
 
             // special handling of "." also in AssetStoreDownloadInfo 
             if (result?.result?.download != null)
@@ -127,6 +129,7 @@ namespace AssetInventory
             if (_searchRequest.Status == StatusCode.Success)
             {
                 _allPackages = _searchRequest.Result?.ToList();
+                OnPackageListUpdated?.Invoke();
             }
             else if (_searchRequest.Status == StatusCode.Failure)
             {
@@ -148,6 +151,7 @@ namespace AssetInventory
             {
                 if (_allPackages == null) _allPackages = new List<PackageInfo>();
                 _allPackages.AddRange(_searchRequest.Result);
+                OnPackageListUpdated?.Invoke();
             }
             else
             {
@@ -163,6 +167,11 @@ namespace AssetInventory
 
             if (considerSearch && _searchRequest != null && !_searchRequest.IsCompleted) return false;
             return _projectPackages != null && (_allPackages != null || (_searchRequest != null && _searchRequest.IsCompleted));
+        }
+
+        public static List<PackageInfo> GetPackages()
+        {
+            return _allPackages;
         }
 
         public static PackageInfo GetPackageInfo(string name)
