@@ -7,7 +7,7 @@ using DG.Tweening;
 public class Projectile : MonoBehaviour
 {
 
-    public UnityAction OnHitTarget;
+    public UnityAction<GameObject> OnHitTarget;
 
     public Vector3 shootDir { private set; get; }
     public float moveSpeed { private set; get; }
@@ -40,8 +40,10 @@ public class Projectile : MonoBehaviour
         this.enemyTag = enemTag;
         this.damage = damage;
         transform.DOMove(transform.position + shootDir * this.moveSpeed, 3f).SetEase(Ease.Linear);
-        OnHitTarget += () =>
+        OnHitTarget += (enemGO) =>
         {
+            if (!enemGO.CompareTag(enemTag)) return;
+            
             var onhit = Instantiate(onHitEffect, transform.position, Quaternion.identity);
             Destroy(onhit, 2f);
         };
@@ -60,7 +62,7 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        OnHitTarget?.Invoke();
+        OnHitTarget?.Invoke(collision.gameObject);
         if (collision.CompareTag(enemyTag))
         {
             //Debug.Log("Hit " + collision.tag);

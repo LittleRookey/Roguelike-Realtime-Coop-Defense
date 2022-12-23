@@ -42,8 +42,8 @@ Material:
     - _BorderWidth: 1
     - _DamagesPercent: 0
     - _EnableExternalAlpha: 0
-    - _Percent: 3
-    - _Steps: 19
+    - _Percent: 6.15
+    - _Steps: 4
     m_Colors:
     - _BorderColor: {r: 0, g: 0, b: 0, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 0}

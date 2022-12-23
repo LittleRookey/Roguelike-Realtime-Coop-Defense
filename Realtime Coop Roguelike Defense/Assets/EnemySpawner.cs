@@ -39,7 +39,8 @@ public class EnemySpawner : MonoBehaviour
     {
         SpawnPoint1,
         SpawnPoint2,
-        SpawnPoint3
+        SpawnPoint3,
+        Random
     };
 
     public enum SpawnMethod
@@ -61,14 +62,15 @@ public class EnemySpawner : MonoBehaviour
     {
         for (int i = 0; i <  enemyContainer.transform.childCount; i++)
         {
-            Destroy(enemyContainer.GetChild(i).gameObject);
+            DestroyImmediate(enemyContainer.GetChild(i).gameObject);
         }
     }
     private void Awake()
     {
         poolManager = GetComponent<PoolManager>();
         enemyPool = poolManager.GetPool<Enemy>("Square");
-        enemyPool.Clear();
+        if (_resetAllPoolOnStart)
+            enemyPool.Clear();
 
     }
 
@@ -111,7 +113,7 @@ public class EnemySpawner : MonoBehaviour
         var enemies = wave.enemies;
         int spawnTime = (int)(wave.spawnTimeBetweenEnemies*1000);
         waveEnemyNumber = GetTotalEnemyNumberOf(wave);
-        waveIndex++;
+        waveIndex = (waveIndex+1) % waves.Length;
 
         switch(wave.spawnMethod)
         {
@@ -142,8 +144,16 @@ public class EnemySpawner : MonoBehaviour
         Health health = poolManager.GetFromPool<Enemy>(name).gameObject.GetComponent<Health>();
 
         health.OnDeath += ReturnPool;
+        // -8.54, 8.14
+        if ((int)spawnPoint < 3) 
+            health.transform.position = spawnPositions[(int)spawnPoint].position;
+        else
+        {
+            Vector3 newPos = new Vector3(17f, Random.Range(-8.54f, 8.14f), 0f);
+            health.transform.position = newPos;
+        }
 
-        health.transform.position = spawnPositions[(int)spawnPoint].position;
+
     }
 
     public async void Spawn(string name, SpawnPoint spawnPoint, float spawnTime, int enemyNumber)
@@ -179,6 +189,7 @@ public class EnemySpawner : MonoBehaviour
         poolManager.TakeToPool<Enemy>(enemy.Name, enemy);
 
         go.GetComponent<Health>().OnDeath -= ReturnPool;
-        
+        go.GetComponent<Detector>().ClearDetector();
+
     }
 } 

@@ -14,6 +14,9 @@ public class UnitAttack : MonoBehaviour
     [SerializeField] public float _attackRange;
     [SerializeField] private float _attackPerTime;
     [SerializeField] private float _attackDelay; // delay time after vfx is over to attack
+    [SerializeField] private Vector3 attackPosOffset;
+    [SerializeField] private bool cantMoveWhenAttack; // stops when enemy is attacking 
+
 
     [Header("Projectile Settings")]
     public bool shootStraight;
@@ -35,7 +38,12 @@ public class UnitAttack : MonoBehaviour
     private GameObject onAttackVFXCopy;
     private float startScale = 0f;
     private float endScale = 1f;
+    
     Vector3 dirToEnemy;
+
+    private AIMovement unitMovement;
+
+
     private Vector3 lookDir => body.transform.localScale.x < 0 ? Vector3.left : Vector3.right;
 
     public UnityAction<GameObject> OnAttack;
@@ -59,11 +67,18 @@ public class UnitAttack : MonoBehaviour
     {
         stopAttackTimer = true;
         //var dirToEnemy = (_target.transform.position - (transform.position + lookDir)).normalized;
-        
+        if (cantMoveWhenAttack)
+        {
+            if (TryGetComponent<AIMovement>(out unitMovement))
+            {
+                Debug.Log("CanMove false");
+                unitMovement.canMove = false;
+            }
+        }
         OnAttack?.Invoke(gameObject);
         // Creates the copy of attack VFX
         if (onAttackVFXCopy == null && onAttackVFX != null)
-            onAttackVFXCopy = Instantiate(onAttackVFX, transform.position + lookDir * 2, onAttackVFX.transform.rotation, transform);
+            onAttackVFXCopy = Instantiate(onAttackVFX, transform.position + attackPosOffset, onAttackVFX.transform.rotation, transform);
         
         // if attack vfx exists, make projectile after vfx is ran
         if (onAttackVFXCopy)
@@ -77,7 +92,7 @@ public class UnitAttack : MonoBehaviour
                     })
                     .OnComplete(() => {
                         onAttackVFXCopy.gameObject.SetActive(false);
-                        dirToEnemy = (_target.transform.position - (transform.position + lookDir)).normalized;
+                        dirToEnemy = (_target.transform.position - (transform.position + attackPosOffset)).normalized;
                         if (shootStraight)
                             dirToEnemy = lookDir;
                         CreateProjectile(dirToEnemy);
@@ -85,7 +100,9 @@ public class UnitAttack : MonoBehaviour
         }
         else
         {
-            dirToEnemy = (_target.transform.position - (transform.position + lookDir)).normalized;
+            dirToEnemy = (_target.transform.position - (transform.position + attackPosOffset)).normalized;
+            if (shootStraight)
+                dirToEnemy = lookDir;
             CreateProjectile(dirToEnemy);
         }
 
@@ -94,12 +111,27 @@ public class UnitAttack : MonoBehaviour
     // Creates projectile and shoots to the direction given
     private async void CreateProjectile(Vector3 dirToEnemy)
     {
+        if (_target == null) return;
         await Task.Delay((int)(1000f * _attackDelay));
-        var proj = Instantiate(projectile, transform.position + lookDir * 2.1f, Quaternion.identity);
+        
+        var proj = Instantiate(projectile, transform.position + attackPosOffset, Quaternion.identity);
+        
         proj.transform.rotation = UtilClass.GetRotationFromDirection(dirToEnemy);
         proj.GetComponent<Projectile>().Setup(dirToEnemy, projectileSpeed, enemyTag, _attackDamage);
+        
         if (onHitVFX) proj.GetComponent<Projectile>().Setup(dirToEnemy, projectileSpeed, enemyTag, _attackDamage, onHitVFX);
+        
         stopAttackTimer = false;
+
+        // enables the movement again
+        if (cantMoveWhenAttack)
+        {
+            if (unitMovement != null)
+            {
+                unitMovement.canMove = true;
+                Debug.Log("Canmove true");
+            }
+        }
     }
 
     public void SetTarget(GameObject target)

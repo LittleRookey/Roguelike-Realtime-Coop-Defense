@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 6528762717463165501}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: -1, y: 1, z: 1}
+  m_LocalScale: {x: -0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6528762717589165906}
@@ -224,10 +224,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _attackDamage: 10
-  _attackRange: 20
+  _attackRange: 10
   _attackPerTime: 1.5
-  _attackDelay: 0
-  shootStraight: 0
+  _attackDelay: 1
+  attackPosOffset: {x: 0, y: 0, z: 0}
+  cantMoveWhenAttack: 1
+  shootStraight: 1
   projectileSpeed: 100
   projectile: {fileID: 5002576645677474304, guid: ba029b1dbe778ea47930e49e35ca961a, type: 3}
   onAttackVFX: {fileID: 0}
@@ -251,11 +253,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <isDetected>k__BackingField: 0
   detectorOrigin: {fileID: 6528762717946954605}
-  detectorSize: 40
+  detectorSize: 10
   detectorOriginOffset: {x: 0, y: 0, z: 0}
   detectorLayerMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 192
   showGizmos: 1
   gizmoIdleColor: {r: 0, g: 1, b: 0, a: 1}
   gizmoDetectedColor: {r: 1, g: 0, b: 0, a: 1}
@@ -338,9 +340,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayer: 0
-  _moveSpeed: 6
+  _moveSpeed: 3
   rayCheckDist: 0.6
   canMove: 1
+  randomMovement: 0
 --- !u!114 &6528762717946954602
 MonoBehaviour:
   m_ObjectHideFlags: 0

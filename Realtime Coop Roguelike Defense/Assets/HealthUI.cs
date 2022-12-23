@@ -14,7 +14,8 @@ public class HealthUI : MonoBehaviour
 {
     public Image healthBar; // actual red healthbar
     public Image backHealthBar; // healthbar that moves white
-    Health health;
+    [SerializeField] private Health health;
+    [SerializeField] private bool isOverlay;
     private HealthSpawnPos currentSpawnPos = HealthSpawnPos.Down;
 
     Vector3 upVector;
@@ -22,7 +23,9 @@ public class HealthUI : MonoBehaviour
     
     private void Awake()
     {
-        transform.parent.TryGetComponent<Health>(out health);
+        if (health == null)
+            transform.parent.TryGetComponent<Health>(out health);
+
         upVector = new Vector3(0f, 1.7f, 0f);
         downVector = new Vector3(0f, 0f, 0f);
     }
@@ -46,6 +49,7 @@ public class HealthUI : MonoBehaviour
 
     public void SetHealthBarPos(HealthSpawnPos hsp, Vector3 add)
     {
+        if (isOverlay) return;
         switch(hsp)
         {
             case HealthSpawnPos.Up:

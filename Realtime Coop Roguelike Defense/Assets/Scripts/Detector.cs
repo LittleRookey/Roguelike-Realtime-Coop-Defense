@@ -63,6 +63,7 @@ public class Detector : MonoBehaviour
 
     UnitAttack unit;
 
+
     private void Awake()
     {
         if (unit == null)
@@ -74,9 +75,14 @@ public class Detector : MonoBehaviour
         detectTag = unit.enemyTag;
         detectorSize = unit._attackRange;
         detectorOrigin = transform;
-        StartCoroutine(DetectionCoroutine());
+        
     }
 
+    private void OnEnable()
+    {
+        StartCoroutine(DetectionCoroutine());
+    }
+    
     IEnumerator DetectionCoroutine()
     {
         yield return delayTime;
@@ -87,7 +93,7 @@ public class Detector : MonoBehaviour
     // Object searches for certain layer object. 
     // if certain layer object is found, increases search range
     // if not found, continue searching with default search range
-    public bool Detection()
+    private bool Detection()
     {
         colliderList.Clear();
 
@@ -144,7 +150,7 @@ public class Detector : MonoBehaviour
     }
 
     // Sorts players from closest from furthest
-    public void SortObjectsOnDistance(List<Collider2D> objects)
+    private void SortObjectsOnDistance(List<Collider2D> objects)
     {
         objects.Sort(SortByDistanceToMe);
     }
@@ -156,12 +162,28 @@ public class Detector : MonoBehaviour
         return squaredRangeA.CompareTo(squaredRangeB);
     }
 
+    public void ClearDetector()
+    {
+        colliderList.Clear();
+        //colliders = null;
+        target = null;
+        isDetected = false;
+        unit.SetTarget(null);
+    }
+
+    UnitAttack unitAttack;
     // builtin function that only works in the editor 
     private void OnValidate()
     {
         if (detectorOrigin == null)
             detectorOrigin = transform;
+        if (unitAttack == null)
+        {
+            unitAttack = GetComponent<UnitAttack>();
+        }
+        detectorSize = GetComponent<UnitAttack>()._attackRange;
     }
+
     private void OnDrawGizmos()
     {
         if (showGizmos)

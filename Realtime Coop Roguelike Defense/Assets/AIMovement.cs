@@ -12,19 +12,35 @@ public class AIMovement : MonoBehaviour
     protected Vector3 moveDir; // AI moving direction
     protected bool isRayOn; // switch to turn ray on
     public bool canMove = true; // 
-
+    public bool randomMovement = false; // allows for random movement, else fixed movement
     protected virtual void Start()
     {
         isRayOn = true;
+
         ChooseNextDirection();
     }
 
     protected virtual void Update()
-    { 
-        transform.position += moveDir * _moveSpeed * Time.deltaTime;
-        CheckCollideDirection();
+    {
+        if (!canMove) return;
+
+        if (randomMovement)
+        {
+            transform.position += moveDir * _moveSpeed * Time.deltaTime;
+            CheckCollideDirection();
+
+        } else
+        {
+            FixedMovement();
+        }
     }
 
+    // moves straight to the position and attacks when there is a target
+    private void FixedMovement()
+    {
+        moveDir = Vector3.left;
+        transform.position += moveDir * _moveSpeed * Time.deltaTime;
+    }
     // TODO Can change the movement into shooting ray into direction and 
     // slerp to that position
 
